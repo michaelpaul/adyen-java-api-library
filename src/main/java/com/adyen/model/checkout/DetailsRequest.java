@@ -14,6 +14,7 @@ package com.adyen.model.checkout;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.adyen.model.checkout.AuthenticationData;
 import com.adyen.model.checkout.PaymentCompletionDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -49,6 +50,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class DetailsRequest {
+  public static final String SERIALIZED_NAME_AUTHENTICATION_DATA = "authenticationData";
+  @SerializedName(SERIALIZED_NAME_AUTHENTICATION_DATA)
+  private AuthenticationData authenticationData;
+
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
   private PaymentCompletionDetails details;
@@ -63,6 +68,29 @@ public class DetailsRequest {
 
   public DetailsRequest() { 
   }
+
+  public DetailsRequest authenticationData(AuthenticationData authenticationData) {
+    
+    this.authenticationData = authenticationData;
+    return this;
+  }
+
+   /**
+   * Get authenticationData
+   * @return authenticationData
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AuthenticationData getAuthenticationData() {
+    return authenticationData;
+  }
+
+
+  public void setAuthenticationData(AuthenticationData authenticationData) {
+    this.authenticationData = authenticationData;
+  }
+
 
   public DetailsRequest details(PaymentCompletionDetails details) {
     
@@ -119,7 +147,9 @@ public class DetailsRequest {
    /**
    * Change the &#x60;authenticationOnly&#x60; indicator originally set in the &#x60;/payments&#x60; request. Only needs to be set if you want to modify the value set previously.
    * @return threeDSAuthenticationOnly
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Change the `authenticationOnly` indicator originally set in the `/payments` request. Only needs to be set if you want to modify the value set previously.")
 
@@ -143,20 +173,22 @@ public class DetailsRequest {
       return false;
     }
     DetailsRequest detailsRequest = (DetailsRequest) o;
-    return Objects.equals(this.details, detailsRequest.details) &&
+    return Objects.equals(this.authenticationData, detailsRequest.authenticationData) &&
+        Objects.equals(this.details, detailsRequest.details) &&
         Objects.equals(this.paymentData, detailsRequest.paymentData) &&
         Objects.equals(this.threeDSAuthenticationOnly, detailsRequest.threeDSAuthenticationOnly);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, paymentData, threeDSAuthenticationOnly);
+    return Objects.hash(authenticationData, details, paymentData, threeDSAuthenticationOnly);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DetailsRequest {\n");
+    sb.append("    authenticationData: ").append(toIndentedString(authenticationData)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    paymentData: ").append(toIndentedString(paymentData)).append("\n");
     sb.append("    threeDSAuthenticationOnly: ").append(toIndentedString(threeDSAuthenticationOnly)).append("\n");
@@ -182,6 +214,7 @@ public class DetailsRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("authenticationData");
     openapiFields.add("details");
     openapiFields.add("paymentData");
     openapiFields.add("threeDSAuthenticationOnly");
@@ -219,6 +252,10 @@ public class DetailsRequest {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // validate the optional field `authenticationData`
+      if (jsonObj.getAsJsonObject("authenticationData") != null) {
+        AuthenticationData.validateJsonObject(jsonObj.getAsJsonObject("authenticationData"));
       }
       // validate the optional field `details`
       if (jsonObj.getAsJsonObject("details") != null) {

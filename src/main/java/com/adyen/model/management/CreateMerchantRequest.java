@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -71,6 +73,10 @@ public class CreateMerchantRequest {
   public static final String SERIALIZED_NAME_REFERENCE = "reference";
   @SerializedName(SERIALIZED_NAME_REFERENCE)
   private String reference;
+
+  public static final String SERIALIZED_NAME_SALES_CHANNELS = "salesChannels";
+  @SerializedName(SERIALIZED_NAME_SALES_CHANNELS)
+  private List<String> salesChannels = null;
 
   public CreateMerchantRequest() { 
   }
@@ -213,6 +219,37 @@ public class CreateMerchantRequest {
   }
 
 
+  public CreateMerchantRequest salesChannels(List<String> salesChannels) {
+    
+    this.salesChannels = salesChannels;
+    return this;
+  }
+
+  public CreateMerchantRequest addSalesChannelsItem(String salesChannelsItem) {
+    if (this.salesChannels == null) {
+      this.salesChannels = new ArrayList<>();
+    }
+    this.salesChannels.add(salesChannelsItem);
+    return this;
+  }
+
+   /**
+   * List of sales channels that the merchant will process payments with
+   * @return salesChannels
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "List of sales channels that the merchant will process payments with")
+
+  public List<String> getSalesChannels() {
+    return salesChannels;
+  }
+
+
+  public void setSalesChannels(List<String> salesChannels) {
+    this.salesChannels = salesChannels;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -228,12 +265,13 @@ public class CreateMerchantRequest {
         Objects.equals(this.description, createMerchantRequest.description) &&
         Objects.equals(this.legalEntityId, createMerchantRequest.legalEntityId) &&
         Objects.equals(this.pricingPlan, createMerchantRequest.pricingPlan) &&
-        Objects.equals(this.reference, createMerchantRequest.reference);
+        Objects.equals(this.reference, createMerchantRequest.reference) &&
+        Objects.equals(this.salesChannels, createMerchantRequest.salesChannels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(businessLineId, companyId, description, legalEntityId, pricingPlan, reference);
+    return Objects.hash(businessLineId, companyId, description, legalEntityId, pricingPlan, reference, salesChannels);
   }
 
   @Override
@@ -246,6 +284,7 @@ public class CreateMerchantRequest {
     sb.append("    legalEntityId: ").append(toIndentedString(legalEntityId)).append("\n");
     sb.append("    pricingPlan: ").append(toIndentedString(pricingPlan)).append("\n");
     sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
+    sb.append("    salesChannels: ").append(toIndentedString(salesChannels)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -274,6 +313,7 @@ public class CreateMerchantRequest {
     openapiFields.add("legalEntityId");
     openapiFields.add("pricingPlan");
     openapiFields.add("reference");
+    openapiFields.add("salesChannels");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -332,6 +372,10 @@ public class CreateMerchantRequest {
       // validate the optional field reference
       if (jsonObj.get("reference") != null && !jsonObj.get("reference").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reference").toString()));
+      }
+      // ensure the json data is an array
+      if (jsonObj.get("salesChannels") != null && !jsonObj.get("salesChannels").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `salesChannels` to be an array in the JSON string but got `%s`", jsonObj.get("salesChannels").toString()));
       }
   }
 

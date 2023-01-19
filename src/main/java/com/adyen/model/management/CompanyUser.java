@@ -333,8 +333,8 @@ public class CompanyUser {
    * The username for this user.
    * @return username
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The username for this user.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The username for this user.")
 
   public String getUsername() {
     return username;
@@ -426,7 +426,6 @@ public class CompanyUser {
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("roles");
     openapiRequiredFields.add("timeZoneCode");
-    openapiRequiredFields.add("username");
   }
 
  /**

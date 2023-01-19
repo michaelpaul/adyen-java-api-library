@@ -48,6 +48,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class ZipDetails {
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_CLICK_AND_COLLECT = "clickAndCollect";
   @SerializedName(SERIALIZED_NAME_CLICK_AND_COLLECT)
   private String clickAndCollect;
@@ -113,6 +117,29 @@ public class ZipDetails {
 
   public ZipDetails() { 
   }
+
+  public ZipDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
 
   public ZipDetails clickAndCollect(String clickAndCollect) {
     
@@ -218,7 +245,8 @@ public class ZipDetails {
       return false;
     }
     ZipDetails zipDetails = (ZipDetails) o;
-    return Objects.equals(this.clickAndCollect, zipDetails.clickAndCollect) &&
+    return Objects.equals(this.checkoutAttemptId, zipDetails.checkoutAttemptId) &&
+        Objects.equals(this.clickAndCollect, zipDetails.clickAndCollect) &&
         Objects.equals(this.recurringDetailReference, zipDetails.recurringDetailReference) &&
         Objects.equals(this.storedPaymentMethodId, zipDetails.storedPaymentMethodId) &&
         Objects.equals(this.type, zipDetails.type);
@@ -226,13 +254,14 @@ public class ZipDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(clickAndCollect, recurringDetailReference, storedPaymentMethodId, type);
+    return Objects.hash(checkoutAttemptId, clickAndCollect, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ZipDetails {\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    clickAndCollect: ").append(toIndentedString(clickAndCollect)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
@@ -259,6 +288,7 @@ public class ZipDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("clickAndCollect");
     openapiFields.add("recurringDetailReference");
     openapiFields.add("storedPaymentMethodId");
@@ -289,6 +319,10 @@ public class ZipDetails {
         if (!ZipDetails.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ZipDetails` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field clickAndCollect
       if (jsonObj.get("clickAndCollect") != null && !jsonObj.get("clickAndCollect").isJsonPrimitive()) {

@@ -118,8 +118,8 @@ public class ShopperStatement {
    * The name you want to be shown on the shopper&#39;s bank or credit card statement. Maximum length: 22 characters; can&#39;t be all numbers.
    * @return doingBusinessAsName
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The name you want to be shown on the shopper's bank or credit card statement. Maximum length: 22 characters; can't be all numbers.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name you want to be shown on the shopper's bank or credit card statement. Maximum length: 22 characters; can't be all numbers.")
 
   public String getDoingBusinessAsName() {
     return doingBusinessAsName;
@@ -206,7 +206,6 @@ public class ShopperStatement {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("doingBusinessAsName");
   }
 
  /**
@@ -229,13 +228,6 @@ public class ShopperStatement {
       for (Entry<String, JsonElement> entry : entries) {
         if (!ShopperStatement.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ShopperStatement` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ShopperStatement.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // validate the optional field doingBusinessAsName

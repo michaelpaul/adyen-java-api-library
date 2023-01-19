@@ -52,6 +52,10 @@ public class RatepayDetails {
   @SerializedName(SERIALIZED_NAME_BILLING_ADDRESS)
   private String billingAddress;
 
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_DELIVERY_ADDRESS = "deliveryAddress";
   @SerializedName(SERIALIZED_NAME_DELIVERY_ADDRESS)
   private String deliveryAddress;
@@ -142,6 +146,29 @@ public class RatepayDetails {
 
   public void setBillingAddress(String billingAddress) {
     this.billingAddress = billingAddress;
+  }
+
+
+  public RatepayDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
   }
 
 
@@ -273,6 +300,7 @@ public class RatepayDetails {
     }
     RatepayDetails ratepayDetails = (RatepayDetails) o;
     return Objects.equals(this.billingAddress, ratepayDetails.billingAddress) &&
+        Objects.equals(this.checkoutAttemptId, ratepayDetails.checkoutAttemptId) &&
         Objects.equals(this.deliveryAddress, ratepayDetails.deliveryAddress) &&
         Objects.equals(this.personalDetails, ratepayDetails.personalDetails) &&
         Objects.equals(this.recurringDetailReference, ratepayDetails.recurringDetailReference) &&
@@ -282,7 +310,7 @@ public class RatepayDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(billingAddress, deliveryAddress, personalDetails, recurringDetailReference, storedPaymentMethodId, type);
+    return Objects.hash(billingAddress, checkoutAttemptId, deliveryAddress, personalDetails, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
@@ -290,6 +318,7 @@ public class RatepayDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class RatepayDetails {\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    deliveryAddress: ").append(toIndentedString(deliveryAddress)).append("\n");
     sb.append("    personalDetails: ").append(toIndentedString(personalDetails)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
@@ -318,6 +347,7 @@ public class RatepayDetails {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("billingAddress");
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("deliveryAddress");
     openapiFields.add("personalDetails");
     openapiFields.add("recurringDetailReference");
@@ -361,6 +391,10 @@ public class RatepayDetails {
       // validate the optional field billingAddress
       if (jsonObj.get("billingAddress") != null && !jsonObj.get("billingAddress").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billingAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billingAddress").toString()));
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field deliveryAddress
       if (jsonObj.get("deliveryAddress") != null && !jsonObj.get("deliveryAddress").isJsonPrimitive()) {

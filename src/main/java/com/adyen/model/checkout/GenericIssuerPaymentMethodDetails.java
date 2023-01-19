@@ -48,6 +48,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class GenericIssuerPaymentMethodDetails {
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_ISSUER = "issuer";
   @SerializedName(SERIALIZED_NAME_ISSUER)
   private String issuer;
@@ -65,6 +69,8 @@ public class GenericIssuerPaymentMethodDetails {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
+    ONLINEBANKING_PL("onlineBanking_PL"),
+    
     EPS("eps"),
     
     ONLINEBANKING_SK("onlineBanking_SK"),
@@ -115,6 +121,29 @@ public class GenericIssuerPaymentMethodDetails {
 
   public GenericIssuerPaymentMethodDetails() { 
   }
+
+  public GenericIssuerPaymentMethodDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
 
   public GenericIssuerPaymentMethodDetails issuer(String issuer) {
     
@@ -220,7 +249,8 @@ public class GenericIssuerPaymentMethodDetails {
       return false;
     }
     GenericIssuerPaymentMethodDetails genericIssuerPaymentMethodDetails = (GenericIssuerPaymentMethodDetails) o;
-    return Objects.equals(this.issuer, genericIssuerPaymentMethodDetails.issuer) &&
+    return Objects.equals(this.checkoutAttemptId, genericIssuerPaymentMethodDetails.checkoutAttemptId) &&
+        Objects.equals(this.issuer, genericIssuerPaymentMethodDetails.issuer) &&
         Objects.equals(this.recurringDetailReference, genericIssuerPaymentMethodDetails.recurringDetailReference) &&
         Objects.equals(this.storedPaymentMethodId, genericIssuerPaymentMethodDetails.storedPaymentMethodId) &&
         Objects.equals(this.type, genericIssuerPaymentMethodDetails.type);
@@ -228,13 +258,14 @@ public class GenericIssuerPaymentMethodDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(issuer, recurringDetailReference, storedPaymentMethodId, type);
+    return Objects.hash(checkoutAttemptId, issuer, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GenericIssuerPaymentMethodDetails {\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
@@ -261,6 +292,7 @@ public class GenericIssuerPaymentMethodDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("issuer");
     openapiFields.add("recurringDetailReference");
     openapiFields.add("storedPaymentMethodId");
@@ -300,6 +332,10 @@ public class GenericIssuerPaymentMethodDetails {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field issuer
       if (jsonObj.get("issuer") != null && !jsonObj.get("issuer").isJsonPrimitive()) {

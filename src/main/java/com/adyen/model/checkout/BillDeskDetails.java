@@ -48,6 +48,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class BillDeskDetails {
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_ISSUER = "issuer";
   @SerializedName(SERIALIZED_NAME_ISSUER)
   private String issuer;
@@ -110,6 +114,29 @@ public class BillDeskDetails {
   public BillDeskDetails() { 
   }
 
+  public BillDeskDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
+
   public BillDeskDetails issuer(String issuer) {
     
     this.issuer = issuer;
@@ -166,19 +193,21 @@ public class BillDeskDetails {
       return false;
     }
     BillDeskDetails billDeskDetails = (BillDeskDetails) o;
-    return Objects.equals(this.issuer, billDeskDetails.issuer) &&
+    return Objects.equals(this.checkoutAttemptId, billDeskDetails.checkoutAttemptId) &&
+        Objects.equals(this.issuer, billDeskDetails.issuer) &&
         Objects.equals(this.type, billDeskDetails.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(issuer, type);
+    return Objects.hash(checkoutAttemptId, issuer, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillDeskDetails {\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
@@ -203,6 +232,7 @@ public class BillDeskDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("issuer");
     openapiFields.add("type");
 
@@ -240,6 +270,10 @@ public class BillDeskDetails {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field issuer
       if (jsonObj.get("issuer") != null && !jsonObj.get("issuer").isJsonPrimitive()) {

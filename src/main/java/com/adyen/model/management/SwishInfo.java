@@ -65,8 +65,8 @@ public class SwishInfo {
    * Swish number. Format: 10 digits without spaces. For example, **1231111111**.
    * @return swishNumber
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Swish number. Format: 10 digits without spaces. For example, **1231111111**.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Swish number. Format: 10 digits without spaces. For example, **1231111111**.")
 
   public String getSwishNumber() {
     return swishNumber;
@@ -127,7 +127,6 @@ public class SwishInfo {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("swishNumber");
   }
 
  /**
@@ -150,13 +149,6 @@ public class SwishInfo {
       for (Entry<String, JsonElement> entry : entries) {
         if (!SwishInfo.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SwishInfo` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SwishInfo.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // validate the optional field swishNumber

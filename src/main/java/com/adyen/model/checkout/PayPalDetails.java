@@ -48,6 +48,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class PayPalDetails {
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_ORDER_I_D = "orderID";
   @SerializedName(SERIALIZED_NAME_ORDER_I_D)
   private String orderID;
@@ -166,6 +170,29 @@ public class PayPalDetails {
 
   public PayPalDetails() { 
   }
+
+  public PayPalDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
 
   public PayPalDetails orderID(String orderID) {
     
@@ -317,7 +344,8 @@ public class PayPalDetails {
       return false;
     }
     PayPalDetails payPalDetails = (PayPalDetails) o;
-    return Objects.equals(this.orderID, payPalDetails.orderID) &&
+    return Objects.equals(this.checkoutAttemptId, payPalDetails.checkoutAttemptId) &&
+        Objects.equals(this.orderID, payPalDetails.orderID) &&
         Objects.equals(this.payerID, payPalDetails.payerID) &&
         Objects.equals(this.recurringDetailReference, payPalDetails.recurringDetailReference) &&
         Objects.equals(this.storedPaymentMethodId, payPalDetails.storedPaymentMethodId) &&
@@ -327,13 +355,14 @@ public class PayPalDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderID, payerID, recurringDetailReference, storedPaymentMethodId, subtype, type);
+    return Objects.hash(checkoutAttemptId, orderID, payerID, recurringDetailReference, storedPaymentMethodId, subtype, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PayPalDetails {\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    orderID: ").append(toIndentedString(orderID)).append("\n");
     sb.append("    payerID: ").append(toIndentedString(payerID)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
@@ -362,6 +391,7 @@ public class PayPalDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("orderID");
     openapiFields.add("payerID");
     openapiFields.add("recurringDetailReference");
@@ -402,6 +432,10 @@ public class PayPalDetails {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field orderID
       if (jsonObj.get("orderID") != null && !jsonObj.get("orderID").isJsonPrimitive()) {

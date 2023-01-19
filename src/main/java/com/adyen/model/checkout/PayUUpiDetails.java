@@ -48,6 +48,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class PayUUpiDetails {
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_RECURRING_DETAIL_REFERENCE = "recurringDetailReference";
   @SerializedName(SERIALIZED_NAME_RECURRING_DETAIL_REFERENCE)
   private String recurringDetailReference;
@@ -115,6 +119,29 @@ public class PayUUpiDetails {
 
   public PayUUpiDetails() { 
   }
+
+  public PayUUpiDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
 
   public PayUUpiDetails recurringDetailReference(String recurringDetailReference) {
     
@@ -243,7 +270,8 @@ public class PayUUpiDetails {
       return false;
     }
     PayUUpiDetails payUUpiDetails = (PayUUpiDetails) o;
-    return Objects.equals(this.recurringDetailReference, payUUpiDetails.recurringDetailReference) &&
+    return Objects.equals(this.checkoutAttemptId, payUUpiDetails.checkoutAttemptId) &&
+        Objects.equals(this.recurringDetailReference, payUUpiDetails.recurringDetailReference) &&
         Objects.equals(this.shopperNotificationReference, payUUpiDetails.shopperNotificationReference) &&
         Objects.equals(this.storedPaymentMethodId, payUUpiDetails.storedPaymentMethodId) &&
         Objects.equals(this.type, payUUpiDetails.type) &&
@@ -252,13 +280,14 @@ public class PayUUpiDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recurringDetailReference, shopperNotificationReference, storedPaymentMethodId, type, virtualPaymentAddress);
+    return Objects.hash(checkoutAttemptId, recurringDetailReference, shopperNotificationReference, storedPaymentMethodId, type, virtualPaymentAddress);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PayUUpiDetails {\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
     sb.append("    shopperNotificationReference: ").append(toIndentedString(shopperNotificationReference)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
@@ -286,6 +315,7 @@ public class PayUUpiDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("recurringDetailReference");
     openapiFields.add("shopperNotificationReference");
     openapiFields.add("storedPaymentMethodId");
@@ -325,6 +355,10 @@ public class PayUUpiDetails {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field recurringDetailReference
       if (jsonObj.get("recurringDetailReference") != null && !jsonObj.get("recurringDetailReference").isJsonPrimitive()) {

@@ -52,6 +52,10 @@ public class OpenInvoiceDetails {
   @SerializedName(SERIALIZED_NAME_BILLING_ADDRESS)
   private String billingAddress;
 
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_DELIVERY_ADDRESS = "deliveryAddress";
   @SerializedName(SERIALIZED_NAME_DELIVERY_ADDRESS)
   private String deliveryAddress;
@@ -144,6 +148,29 @@ public class OpenInvoiceDetails {
 
   public void setBillingAddress(String billingAddress) {
     this.billingAddress = billingAddress;
+  }
+
+
+  public OpenInvoiceDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
   }
 
 
@@ -275,6 +302,7 @@ public class OpenInvoiceDetails {
     }
     OpenInvoiceDetails openInvoiceDetails = (OpenInvoiceDetails) o;
     return Objects.equals(this.billingAddress, openInvoiceDetails.billingAddress) &&
+        Objects.equals(this.checkoutAttemptId, openInvoiceDetails.checkoutAttemptId) &&
         Objects.equals(this.deliveryAddress, openInvoiceDetails.deliveryAddress) &&
         Objects.equals(this.personalDetails, openInvoiceDetails.personalDetails) &&
         Objects.equals(this.recurringDetailReference, openInvoiceDetails.recurringDetailReference) &&
@@ -284,7 +312,7 @@ public class OpenInvoiceDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(billingAddress, deliveryAddress, personalDetails, recurringDetailReference, storedPaymentMethodId, type);
+    return Objects.hash(billingAddress, checkoutAttemptId, deliveryAddress, personalDetails, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
@@ -292,6 +320,7 @@ public class OpenInvoiceDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class OpenInvoiceDetails {\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    deliveryAddress: ").append(toIndentedString(deliveryAddress)).append("\n");
     sb.append("    personalDetails: ").append(toIndentedString(personalDetails)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
@@ -320,6 +349,7 @@ public class OpenInvoiceDetails {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("billingAddress");
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("deliveryAddress");
     openapiFields.add("personalDetails");
     openapiFields.add("recurringDetailReference");
@@ -355,6 +385,10 @@ public class OpenInvoiceDetails {
       // validate the optional field billingAddress
       if (jsonObj.get("billingAddress") != null && !jsonObj.get("billingAddress").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billingAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billingAddress").toString()));
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field deliveryAddress
       if (jsonObj.get("deliveryAddress") != null && !jsonObj.get("deliveryAddress").isJsonPrimitive()) {

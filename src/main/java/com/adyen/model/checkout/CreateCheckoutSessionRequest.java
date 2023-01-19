@@ -18,9 +18,11 @@ import com.adyen.model.checkout.AccountInfo;
 import com.adyen.model.checkout.Address;
 import com.adyen.model.checkout.Amount;
 import com.adyen.model.checkout.ApplicationInfo;
-import com.adyen.model.checkout.AuthenticationData;
+import com.adyen.model.checkout.AuthenticationData2;
 import com.adyen.model.checkout.CheckoutSessionInstallmentOption;
 import com.adyen.model.checkout.Company;
+import com.adyen.model.checkout.FundOrigin;
+import com.adyen.model.checkout.FundRecipient;
 import com.adyen.model.checkout.LineItem;
 import com.adyen.model.checkout.Mandate;
 import com.adyen.model.checkout.Name;
@@ -92,7 +94,7 @@ public class CreateCheckoutSessionRequest {
 
   public static final String SERIALIZED_NAME_AUTHENTICATION_DATA = "authenticationData";
   @SerializedName(SERIALIZED_NAME_AUTHENTICATION_DATA)
-  private AuthenticationData authenticationData;
+  private AuthenticationData2 authenticationData;
 
   public static final String SERIALIZED_NAME_BILLING_ADDRESS = "billingAddress";
   @SerializedName(SERIALIZED_NAME_BILLING_ADDRESS)
@@ -194,6 +196,14 @@ public class CreateCheckoutSessionRequest {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   private OffsetDateTime expiresAt;
+
+  public static final String SERIALIZED_NAME_FUND_ORIGIN = "fundOrigin";
+  @SerializedName(SERIALIZED_NAME_FUND_ORIGIN)
+  private FundOrigin fundOrigin;
+
+  public static final String SERIALIZED_NAME_FUND_RECIPIENT = "fundRecipient";
+  @SerializedName(SERIALIZED_NAME_FUND_RECIPIENT)
+  private FundRecipient fundRecipient;
 
   public static final String SERIALIZED_NAME_INSTALLMENT_OPTIONS = "installmentOptions";
   @SerializedName(SERIALIZED_NAME_INSTALLMENT_OPTIONS)
@@ -576,7 +586,7 @@ public class CreateCheckoutSessionRequest {
   }
 
 
-  public CreateCheckoutSessionRequest authenticationData(AuthenticationData authenticationData) {
+  public CreateCheckoutSessionRequest authenticationData(AuthenticationData2 authenticationData) {
     
     this.authenticationData = authenticationData;
     return this;
@@ -589,12 +599,12 @@ public class CreateCheckoutSessionRequest {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public AuthenticationData getAuthenticationData() {
+  public AuthenticationData2 getAuthenticationData() {
     return authenticationData;
   }
 
 
-  public void setAuthenticationData(AuthenticationData authenticationData) {
+  public void setAuthenticationData(AuthenticationData2 authenticationData) {
     this.authenticationData = authenticationData;
   }
 
@@ -903,6 +913,52 @@ public class CreateCheckoutSessionRequest {
 
   public void setExpiresAt(OffsetDateTime expiresAt) {
     this.expiresAt = expiresAt;
+  }
+
+
+  public CreateCheckoutSessionRequest fundOrigin(FundOrigin fundOrigin) {
+    
+    this.fundOrigin = fundOrigin;
+    return this;
+  }
+
+   /**
+   * Get fundOrigin
+   * @return fundOrigin
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public FundOrigin getFundOrigin() {
+    return fundOrigin;
+  }
+
+
+  public void setFundOrigin(FundOrigin fundOrigin) {
+    this.fundOrigin = fundOrigin;
+  }
+
+
+  public CreateCheckoutSessionRequest fundRecipient(FundRecipient fundRecipient) {
+    
+    this.fundRecipient = fundRecipient;
+    return this;
+  }
+
+   /**
+   * Get fundRecipient
+   * @return fundRecipient
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public FundRecipient getFundRecipient() {
+    return fundRecipient;
+  }
+
+
+  public void setFundRecipient(FundRecipient fundRecipient) {
+    this.fundRecipient = fundRecipient;
   }
 
 
@@ -1681,6 +1737,8 @@ public class CreateCheckoutSessionRequest {
         Objects.equals(this.enablePayOut, createCheckoutSessionRequest.enablePayOut) &&
         Objects.equals(this.enableRecurring, createCheckoutSessionRequest.enableRecurring) &&
         Objects.equals(this.expiresAt, createCheckoutSessionRequest.expiresAt) &&
+        Objects.equals(this.fundOrigin, createCheckoutSessionRequest.fundOrigin) &&
+        Objects.equals(this.fundRecipient, createCheckoutSessionRequest.fundRecipient) &&
         Objects.equals(this.installmentOptions, createCheckoutSessionRequest.installmentOptions) &&
         Objects.equals(this.lineItems, createCheckoutSessionRequest.lineItems) &&
         Objects.equals(this.mandate, createCheckoutSessionRequest.mandate) &&
@@ -1716,7 +1774,7 @@ public class CreateCheckoutSessionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountInfo, additionalAmount, additionalData, allowedPaymentMethods, amount, applicationInfo, authenticationData, billingAddress, blockedPaymentMethods, captureDelayHours, channel, company, countryCode, dateOfBirth, deliverAt, deliveryAddress, enableOneClick, enablePayOut, enableRecurring, expiresAt, installmentOptions, lineItems, mandate, mcc, merchantAccount, merchantOrderReference, metadata, mpiData, recurringExpiry, recurringFrequency, recurringProcessingModel, redirectFromIssuerMethod, redirectToIssuerMethod, reference, returnUrl, riskData, shopperEmail, shopperIP, shopperInteraction, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splitCardFundingSources, splits, store, storePaymentMethod, telephoneNumber, threeDSAuthenticationOnly, trustedShopper);
+    return Objects.hash(accountInfo, additionalAmount, additionalData, allowedPaymentMethods, amount, applicationInfo, authenticationData, billingAddress, blockedPaymentMethods, captureDelayHours, channel, company, countryCode, dateOfBirth, deliverAt, deliveryAddress, enableOneClick, enablePayOut, enableRecurring, expiresAt, fundOrigin, fundRecipient, installmentOptions, lineItems, mandate, mcc, merchantAccount, merchantOrderReference, metadata, mpiData, recurringExpiry, recurringFrequency, recurringProcessingModel, redirectFromIssuerMethod, redirectToIssuerMethod, reference, returnUrl, riskData, shopperEmail, shopperIP, shopperInteraction, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splitCardFundingSources, splits, store, storePaymentMethod, telephoneNumber, threeDSAuthenticationOnly, trustedShopper);
   }
 
   @Override
@@ -1743,6 +1801,8 @@ public class CreateCheckoutSessionRequest {
     sb.append("    enablePayOut: ").append(toIndentedString(enablePayOut)).append("\n");
     sb.append("    enableRecurring: ").append(toIndentedString(enableRecurring)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
+    sb.append("    fundOrigin: ").append(toIndentedString(fundOrigin)).append("\n");
+    sb.append("    fundRecipient: ").append(toIndentedString(fundRecipient)).append("\n");
     sb.append("    installmentOptions: ").append(toIndentedString(installmentOptions)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
     sb.append("    mandate: ").append(toIndentedString(mandate)).append("\n");
@@ -1816,6 +1876,8 @@ public class CreateCheckoutSessionRequest {
     openapiFields.add("enablePayOut");
     openapiFields.add("enableRecurring");
     openapiFields.add("expiresAt");
+    openapiFields.add("fundOrigin");
+    openapiFields.add("fundRecipient");
     openapiFields.add("installmentOptions");
     openapiFields.add("lineItems");
     openapiFields.add("mandate");
@@ -1907,7 +1969,7 @@ public class CreateCheckoutSessionRequest {
       }
       // validate the optional field `authenticationData`
       if (jsonObj.getAsJsonObject("authenticationData") != null) {
-        AuthenticationData.validateJsonObject(jsonObj.getAsJsonObject("authenticationData"));
+        AuthenticationData2.validateJsonObject(jsonObj.getAsJsonObject("authenticationData"));
       }
       // validate the optional field `billingAddress`
       if (jsonObj.getAsJsonObject("billingAddress") != null) {
@@ -1935,6 +1997,14 @@ public class CreateCheckoutSessionRequest {
       // validate the optional field `deliveryAddress`
       if (jsonObj.getAsJsonObject("deliveryAddress") != null) {
         Address.validateJsonObject(jsonObj.getAsJsonObject("deliveryAddress"));
+      }
+      // validate the optional field `fundOrigin`
+      if (jsonObj.getAsJsonObject("fundOrigin") != null) {
+        FundOrigin.validateJsonObject(jsonObj.getAsJsonObject("fundOrigin"));
+      }
+      // validate the optional field `fundRecipient`
+      if (jsonObj.getAsJsonObject("fundRecipient") != null) {
+        FundRecipient.validateJsonObject(jsonObj.getAsJsonObject("fundRecipient"));
       }
       JsonArray jsonArraylineItems = jsonObj.getAsJsonArray("lineItems");
       if (jsonArraylineItems != null) {

@@ -174,8 +174,8 @@ public class KlarnaInfo {
    * The region of operation. For example, **NA**, **EU**, **CH**, **AU**.
    * @return region
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The region of operation. For example, **NA**, **EU**, **CH**, **AU**.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The region of operation. For example, **NA**, **EU**, **CH**, **AU**.")
 
   public RegionEnum getRegion() {
     return region;
@@ -269,7 +269,6 @@ public class KlarnaInfo {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("disputeEmail");
-    openapiRequiredFields.add("region");
     openapiRequiredFields.add("supportEmail");
   }
 

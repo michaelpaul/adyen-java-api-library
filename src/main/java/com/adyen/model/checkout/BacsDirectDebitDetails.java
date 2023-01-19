@@ -56,6 +56,10 @@ public class BacsDirectDebitDetails {
   @SerializedName(SERIALIZED_NAME_BANK_LOCATION_ID)
   private String bankLocationId;
 
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_HOLDER_NAME = "holderName";
   @SerializedName(SERIALIZED_NAME_HOLDER_NAME)
   private String holderName;
@@ -166,6 +170,29 @@ public class BacsDirectDebitDetails {
   }
 
 
+  public BacsDirectDebitDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
+
   public BacsDirectDebitDetails holderName(String holderName) {
     
     this.holderName = holderName;
@@ -272,6 +299,7 @@ public class BacsDirectDebitDetails {
     BacsDirectDebitDetails bacsDirectDebitDetails = (BacsDirectDebitDetails) o;
     return Objects.equals(this.bankAccountNumber, bacsDirectDebitDetails.bankAccountNumber) &&
         Objects.equals(this.bankLocationId, bacsDirectDebitDetails.bankLocationId) &&
+        Objects.equals(this.checkoutAttemptId, bacsDirectDebitDetails.checkoutAttemptId) &&
         Objects.equals(this.holderName, bacsDirectDebitDetails.holderName) &&
         Objects.equals(this.recurringDetailReference, bacsDirectDebitDetails.recurringDetailReference) &&
         Objects.equals(this.storedPaymentMethodId, bacsDirectDebitDetails.storedPaymentMethodId) &&
@@ -280,7 +308,7 @@ public class BacsDirectDebitDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankAccountNumber, bankLocationId, holderName, recurringDetailReference, storedPaymentMethodId, type);
+    return Objects.hash(bankAccountNumber, bankLocationId, checkoutAttemptId, holderName, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
@@ -289,6 +317,7 @@ public class BacsDirectDebitDetails {
     sb.append("class BacsDirectDebitDetails {\n");
     sb.append("    bankAccountNumber: ").append(toIndentedString(bankAccountNumber)).append("\n");
     sb.append("    bankLocationId: ").append(toIndentedString(bankLocationId)).append("\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    holderName: ").append(toIndentedString(holderName)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
@@ -317,6 +346,7 @@ public class BacsDirectDebitDetails {
     openapiFields = new HashSet<String>();
     openapiFields.add("bankAccountNumber");
     openapiFields.add("bankLocationId");
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("holderName");
     openapiFields.add("recurringDetailReference");
     openapiFields.add("storedPaymentMethodId");
@@ -355,6 +385,10 @@ public class BacsDirectDebitDetails {
       // validate the optional field bankLocationId
       if (jsonObj.get("bankLocationId") != null && !jsonObj.get("bankLocationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bankLocationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bankLocationId").toString()));
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field holderName
       if (jsonObj.get("holderName") != null && !jsonObj.get("holderName").isJsonPrimitive()) {

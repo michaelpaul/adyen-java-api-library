@@ -56,6 +56,10 @@ public class AchDetails {
   @SerializedName(SERIALIZED_NAME_BANK_LOCATION_ID)
   private String bankLocationId;
 
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_ENCRYPTED_BANK_ACCOUNT_NUMBER = "encryptedBankAccountNumber";
   @SerializedName(SERIALIZED_NAME_ENCRYPTED_BANK_ACCOUNT_NUMBER)
   private String encryptedBankAccountNumber;
@@ -171,6 +175,29 @@ public class AchDetails {
 
   public void setBankLocationId(String bankLocationId) {
     this.bankLocationId = bankLocationId;
+  }
+
+
+  public AchDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
   }
 
 
@@ -326,6 +353,7 @@ public class AchDetails {
     AchDetails achDetails = (AchDetails) o;
     return Objects.equals(this.bankAccountNumber, achDetails.bankAccountNumber) &&
         Objects.equals(this.bankLocationId, achDetails.bankLocationId) &&
+        Objects.equals(this.checkoutAttemptId, achDetails.checkoutAttemptId) &&
         Objects.equals(this.encryptedBankAccountNumber, achDetails.encryptedBankAccountNumber) &&
         Objects.equals(this.encryptedBankLocationId, achDetails.encryptedBankLocationId) &&
         Objects.equals(this.ownerName, achDetails.ownerName) &&
@@ -336,7 +364,7 @@ public class AchDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankAccountNumber, bankLocationId, encryptedBankAccountNumber, encryptedBankLocationId, ownerName, recurringDetailReference, storedPaymentMethodId, type);
+    return Objects.hash(bankAccountNumber, bankLocationId, checkoutAttemptId, encryptedBankAccountNumber, encryptedBankLocationId, ownerName, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
@@ -345,6 +373,7 @@ public class AchDetails {
     sb.append("class AchDetails {\n");
     sb.append("    bankAccountNumber: ").append(toIndentedString(bankAccountNumber)).append("\n");
     sb.append("    bankLocationId: ").append(toIndentedString(bankLocationId)).append("\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    encryptedBankAccountNumber: ").append(toIndentedString(encryptedBankAccountNumber)).append("\n");
     sb.append("    encryptedBankLocationId: ").append(toIndentedString(encryptedBankLocationId)).append("\n");
     sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
@@ -375,6 +404,7 @@ public class AchDetails {
     openapiFields = new HashSet<String>();
     openapiFields.add("bankAccountNumber");
     openapiFields.add("bankLocationId");
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("encryptedBankAccountNumber");
     openapiFields.add("encryptedBankLocationId");
     openapiFields.add("ownerName");
@@ -423,6 +453,10 @@ public class AchDetails {
       // validate the optional field bankLocationId
       if (jsonObj.get("bankLocationId") != null && !jsonObj.get("bankLocationId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bankLocationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bankLocationId").toString()));
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field encryptedBankAccountNumber
       if (jsonObj.get("encryptedBankAccountNumber") != null && !jsonObj.get("encryptedBankAccountNumber").isJsonPrimitive()) {

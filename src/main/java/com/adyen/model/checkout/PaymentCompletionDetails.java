@@ -100,6 +100,10 @@ public class PaymentCompletionDetails {
   @SerializedName(SERIALIZED_NAME_REDIRECT_RESULT)
   private String redirectResult;
 
+  public static final String SERIALIZED_NAME_RESULT_CODE = "resultCode";
+  @SerializedName(SERIALIZED_NAME_RESULT_CODE)
+  private String resultCode;
+
   public static final String SERIALIZED_NAME_THREE_D_S_RESULT = "threeDSResult";
   @SerializedName(SERIALIZED_NAME_THREE_D_S_RESULT)
   private String threeDSResult;
@@ -414,6 +418,29 @@ public class PaymentCompletionDetails {
   }
 
 
+  public PaymentCompletionDetails resultCode(String resultCode) {
+    
+    this.resultCode = resultCode;
+    return this;
+  }
+
+   /**
+   * Value you received from the WeChat Pay SDK.
+   * @return resultCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Value you received from the WeChat Pay SDK.")
+
+  public String getResultCode() {
+    return resultCode;
+  }
+
+
+  public void setResultCode(String resultCode) {
+    this.resultCode = resultCode;
+  }
+
+
   public PaymentCompletionDetails threeDSResult(String threeDSResult) {
     
     this.threeDSResult = threeDSResult;
@@ -506,6 +533,7 @@ public class PaymentCompletionDetails {
         Objects.equals(this.paymentID, paymentCompletionDetails.paymentID) &&
         Objects.equals(this.paymentStatus, paymentCompletionDetails.paymentStatus) &&
         Objects.equals(this.redirectResult, paymentCompletionDetails.redirectResult) &&
+        Objects.equals(this.resultCode, paymentCompletionDetails.resultCode) &&
         Objects.equals(this.threeDSResult, paymentCompletionDetails.threeDSResult) &&
         Objects.equals(this.threeds2ChallengeResult, paymentCompletionDetails.threeds2ChallengeResult) &&
         Objects.equals(this.threeds2Fingerprint, paymentCompletionDetails.threeds2Fingerprint);
@@ -513,7 +541,7 @@ public class PaymentCompletionDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(MD, paReq, paRes, billingToken, cupsecureplusSmscode, facilitatorAccessToken, oneTimePasscode, orderID, payerID, payload, paymentID, paymentStatus, redirectResult, threeDSResult, threeds2ChallengeResult, threeds2Fingerprint);
+    return Objects.hash(MD, paReq, paRes, billingToken, cupsecureplusSmscode, facilitatorAccessToken, oneTimePasscode, orderID, payerID, payload, paymentID, paymentStatus, redirectResult, resultCode, threeDSResult, threeds2ChallengeResult, threeds2Fingerprint);
   }
 
   @Override
@@ -533,6 +561,7 @@ public class PaymentCompletionDetails {
     sb.append("    paymentID: ").append(toIndentedString(paymentID)).append("\n");
     sb.append("    paymentStatus: ").append(toIndentedString(paymentStatus)).append("\n");
     sb.append("    redirectResult: ").append(toIndentedString(redirectResult)).append("\n");
+    sb.append("    resultCode: ").append(toIndentedString(resultCode)).append("\n");
     sb.append("    threeDSResult: ").append(toIndentedString(threeDSResult)).append("\n");
     sb.append("    threeds2ChallengeResult: ").append(toIndentedString(threeds2ChallengeResult)).append("\n");
     sb.append("    threeds2Fingerprint: ").append(toIndentedString(threeds2Fingerprint)).append("\n");
@@ -571,6 +600,7 @@ public class PaymentCompletionDetails {
     openapiFields.add("paymentID");
     openapiFields.add("paymentStatus");
     openapiFields.add("redirectResult");
+    openapiFields.add("resultCode");
     openapiFields.add("threeDSResult");
     openapiFields.add("threeds2.challengeResult");
     openapiFields.add("threeds2.fingerprint");
@@ -652,6 +682,10 @@ public class PaymentCompletionDetails {
       // validate the optional field redirectResult
       if (jsonObj.get("redirectResult") != null && !jsonObj.get("redirectResult").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `redirectResult` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectResult").toString()));
+      }
+      // validate the optional field resultCode
+      if (jsonObj.get("resultCode") != null && !jsonObj.get("resultCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `resultCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resultCode").toString()));
       }
       // validate the optional field threeDSResult
       if (jsonObj.get("threeDSResult") != null && !jsonObj.get("threeDSResult").isJsonPrimitive()) {

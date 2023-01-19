@@ -1,5 +1,5 @@
 /*
- * Configuration API
+ * Legal Entity Management API
  *
  * The version of the OpenAPI document: 2
  * Contact: developer-experience@adyen.com
@@ -10,10 +10,11 @@
  */
 
 
-package com.adyen.model.balanceplatform;
+package com.adyen.model.legalentitymanagement;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.adyen.model.legalentitymanagement.CapabilityProblemEntityRecursive;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -41,19 +42,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.adyen.model.balanceplatform.JSON;
+import com.adyen.model.legalentitymanagement.JSON;
 
 /**
- * CapabilityProblemEntityRecursive
+ * CapabilityProblemEntity
  */
 
-public class CapabilityProblemEntityRecursive {
+public class CapabilityProblemEntity {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_OWNER = "owner";
+  @SerializedName(SERIALIZED_NAME_OWNER)
+  private CapabilityProblemEntityRecursive owner;
+
   /**
-   * Type of entity.   Possible values: **LegalEntity**, **BankAccount**, **Document**.
+   * Gets or Sets type
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -105,21 +110,21 @@ public class CapabilityProblemEntityRecursive {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public CapabilityProblemEntityRecursive() { 
+  public CapabilityProblemEntity() { 
   }
 
-  public CapabilityProblemEntityRecursive id(String id) {
+  public CapabilityProblemEntity id(String id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * The ID of the entity.
+   * Get id
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the entity.")
+  @ApiModelProperty(value = "")
 
   public String getId() {
     return id;
@@ -131,18 +136,41 @@ public class CapabilityProblemEntityRecursive {
   }
 
 
-  public CapabilityProblemEntityRecursive type(TypeEnum type) {
+  public CapabilityProblemEntity owner(CapabilityProblemEntityRecursive owner) {
+    
+    this.owner = owner;
+    return this;
+  }
+
+   /**
+   * Get owner
+   * @return owner
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CapabilityProblemEntityRecursive getOwner() {
+    return owner;
+  }
+
+
+  public void setOwner(CapabilityProblemEntityRecursive owner) {
+    this.owner = owner;
+  }
+
+
+  public CapabilityProblemEntity type(TypeEnum type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Type of entity.   Possible values: **LegalEntity**, **BankAccount**, **Document**.
+   * Get type
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Type of entity.   Possible values: **LegalEntity**, **BankAccount**, **Document**.")
+  @ApiModelProperty(value = "")
 
   public TypeEnum getType() {
     return type;
@@ -163,21 +191,23 @@ public class CapabilityProblemEntityRecursive {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CapabilityProblemEntityRecursive capabilityProblemEntityRecursive = (CapabilityProblemEntityRecursive) o;
-    return Objects.equals(this.id, capabilityProblemEntityRecursive.id) &&
-        Objects.equals(this.type, capabilityProblemEntityRecursive.type);
+    CapabilityProblemEntity capabilityProblemEntity = (CapabilityProblemEntity) o;
+    return Objects.equals(this.id, capabilityProblemEntity.id) &&
+        Objects.equals(this.owner, capabilityProblemEntity.owner) &&
+        Objects.equals(this.type, capabilityProblemEntity.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type);
+    return Objects.hash(id, owner, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CapabilityProblemEntityRecursive {\n");
+    sb.append("class CapabilityProblemEntity {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -202,6 +232,7 @@ public class CapabilityProblemEntityRecursive {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("owner");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
@@ -212,27 +243,31 @@ public class CapabilityProblemEntityRecursive {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CapabilityProblemEntityRecursive
+  * @throws IOException if the JSON Object is invalid with respect to CapabilityProblemEntity
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (CapabilityProblemEntityRecursive.openapiRequiredFields.isEmpty()) {
+        if (CapabilityProblemEntity.openapiRequiredFields.isEmpty()) {
           return;
         } else { // has required fields
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CapabilityProblemEntityRecursive is not found in the empty JSON string", CapabilityProblemEntityRecursive.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CapabilityProblemEntity is not found in the empty JSON string", CapabilityProblemEntity.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!CapabilityProblemEntityRecursive.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CapabilityProblemEntityRecursive` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!CapabilityProblemEntity.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CapabilityProblemEntity` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       // validate the optional field id
       if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // validate the optional field `owner`
+      if (jsonObj.getAsJsonObject("owner") != null) {
+        CapabilityProblemEntityRecursive.validateJsonObject(jsonObj.getAsJsonObject("owner"));
       }
       // ensure the field type can be parsed to an enum value
       if (jsonObj.get("type") != null) {
@@ -247,22 +282,22 @@ public class CapabilityProblemEntityRecursive {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CapabilityProblemEntityRecursive.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CapabilityProblemEntityRecursive' and its subtypes
+       if (!CapabilityProblemEntity.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CapabilityProblemEntity' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CapabilityProblemEntityRecursive> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CapabilityProblemEntityRecursive.class));
+       final TypeAdapter<CapabilityProblemEntity> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CapabilityProblemEntity.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CapabilityProblemEntityRecursive>() {
+       return (TypeAdapter<T>) new TypeAdapter<CapabilityProblemEntity>() {
            @Override
-           public void write(JsonWriter out, CapabilityProblemEntityRecursive value) throws IOException {
+           public void write(JsonWriter out, CapabilityProblemEntity value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CapabilityProblemEntityRecursive read(JsonReader in) throws IOException {
+           public CapabilityProblemEntity read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -273,18 +308,18 @@ public class CapabilityProblemEntityRecursive {
   }
 
  /**
-  * Create an instance of CapabilityProblemEntityRecursive given an JSON string
+  * Create an instance of CapabilityProblemEntity given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CapabilityProblemEntityRecursive
-  * @throws IOException if the JSON string is invalid with respect to CapabilityProblemEntityRecursive
+  * @return An instance of CapabilityProblemEntity
+  * @throws IOException if the JSON string is invalid with respect to CapabilityProblemEntity
   */
-  public static CapabilityProblemEntityRecursive fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CapabilityProblemEntityRecursive.class);
+  public static CapabilityProblemEntity fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CapabilityProblemEntity.class);
   }
 
  /**
-  * Convert an instance of CapabilityProblemEntityRecursive to an JSON string
+  * Convert an instance of CapabilityProblemEntity to an JSON string
   *
   * @return JSON string
   */

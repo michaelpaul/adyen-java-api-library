@@ -48,6 +48,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class VippsDetails {
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_RECURRING_DETAIL_REFERENCE = "recurringDetailReference";
   @SerializedName(SERIALIZED_NAME_RECURRING_DETAIL_REFERENCE)
   private String recurringDetailReference;
@@ -111,6 +115,29 @@ public class VippsDetails {
 
   public VippsDetails() { 
   }
+
+  public VippsDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
 
   public VippsDetails recurringDetailReference(String recurringDetailReference) {
     
@@ -216,7 +243,8 @@ public class VippsDetails {
       return false;
     }
     VippsDetails vippsDetails = (VippsDetails) o;
-    return Objects.equals(this.recurringDetailReference, vippsDetails.recurringDetailReference) &&
+    return Objects.equals(this.checkoutAttemptId, vippsDetails.checkoutAttemptId) &&
+        Objects.equals(this.recurringDetailReference, vippsDetails.recurringDetailReference) &&
         Objects.equals(this.storedPaymentMethodId, vippsDetails.storedPaymentMethodId) &&
         Objects.equals(this.telephoneNumber, vippsDetails.telephoneNumber) &&
         Objects.equals(this.type, vippsDetails.type);
@@ -224,13 +252,14 @@ public class VippsDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recurringDetailReference, storedPaymentMethodId, telephoneNumber, type);
+    return Objects.hash(checkoutAttemptId, recurringDetailReference, storedPaymentMethodId, telephoneNumber, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VippsDetails {\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
     sb.append("    telephoneNumber: ").append(toIndentedString(telephoneNumber)).append("\n");
@@ -257,6 +286,7 @@ public class VippsDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("recurringDetailReference");
     openapiFields.add("storedPaymentMethodId");
     openapiFields.add("telephoneNumber");
@@ -295,6 +325,10 @@ public class VippsDetails {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field recurringDetailReference
       if (jsonObj.get("recurringDetailReference") != null && !jsonObj.get("recurringDetailReference").isJsonPrimitive()) {

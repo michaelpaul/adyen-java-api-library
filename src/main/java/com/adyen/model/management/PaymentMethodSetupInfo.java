@@ -20,6 +20,7 @@ import com.adyen.model.management.CartesBancairesInfo;
 import com.adyen.model.management.GiroPayInfo;
 import com.adyen.model.management.GooglePayInfo;
 import com.adyen.model.management.KlarnaInfo;
+import com.adyen.model.management.MealVoucherFRInfo;
 import com.adyen.model.management.PayPalInfo;
 import com.adyen.model.management.SofortInfo;
 import com.adyen.model.management.SwishInfo;
@@ -83,6 +84,10 @@ public class PaymentMethodSetupInfo {
   @SerializedName(SERIALIZED_NAME_CURRENCIES)
   private List<String> currencies = null;
 
+  public static final String SERIALIZED_NAME_CUSTOM_ROUTING_FLAGS = "customRoutingFlags";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_ROUTING_FLAGS)
+  private List<String> customRoutingFlags = null;
+
   public static final String SERIALIZED_NAME_GIRO_PAY = "giroPay";
   @SerializedName(SERIALIZED_NAME_GIRO_PAY)
   private GiroPayInfo giroPay;
@@ -95,9 +100,17 @@ public class PaymentMethodSetupInfo {
   @SerializedName(SERIALIZED_NAME_KLARNA)
   private KlarnaInfo klarna;
 
+  public static final String SERIALIZED_NAME_MEAL_VOUCHER_F_R = "mealVoucher_FR";
+  @SerializedName(SERIALIZED_NAME_MEAL_VOUCHER_F_R)
+  private MealVoucherFRInfo mealVoucherFR;
+
   public static final String SERIALIZED_NAME_PAYPAL = "paypal";
   @SerializedName(SERIALIZED_NAME_PAYPAL)
   private PayPalInfo paypal;
+
+  public static final String SERIALIZED_NAME_REFERENCE = "reference";
+  @SerializedName(SERIALIZED_NAME_REFERENCE)
+  private String reference;
 
   /**
    * The sales channel. Required if the merchant account does not have a sales channel. When you provide this field, it overrides the default sales channel set on the merchant account.  Possible values: **eCommerce**, **pos**, **contAuth**, and **moto**. 
@@ -197,11 +210,21 @@ public class PaymentMethodSetupInfo {
     
     EFTPOS_AUSTRALIA("eftpos_australia"),
     
+    ELO("elo"),
+    
+    ELOCREDIT("elocredit"),
+    
+    ELODEBIT("elodebit"),
+    
     GIROCARD("girocard"),
     
     GIROPAY("giropay"),
     
     GOOGLEPAY("googlepay"),
+    
+    HIPER("hiper"),
+    
+    HIPERCARD("hipercard"),
     
     IDEAL("ideal"),
     
@@ -221,6 +244,10 @@ public class PaymentMethodSetupInfo {
     
     MC("mc"),
     
+    MCDEBIT("mcdebit"),
+    
+    MEALVOUCHER_FR("mealVoucher_FR"),
+    
     MOBILEPAY("mobilepay"),
     
     MULTIBANCO("multibanco"),
@@ -234,6 +261,10 @@ public class PaymentMethodSetupInfo {
     TRUSTLY("trustly"),
     
     VISA("visa"),
+    
+    VISADEBIT("visadebit"),
+    
+    VPAY("vpay"),
     
     WECHATPAY("wechatpay"),
     
@@ -438,6 +469,37 @@ public class PaymentMethodSetupInfo {
   }
 
 
+  public PaymentMethodSetupInfo customRoutingFlags(List<String> customRoutingFlags) {
+    
+    this.customRoutingFlags = customRoutingFlags;
+    return this;
+  }
+
+  public PaymentMethodSetupInfo addCustomRoutingFlagsItem(String customRoutingFlagsItem) {
+    if (this.customRoutingFlags == null) {
+      this.customRoutingFlags = new ArrayList<>();
+    }
+    this.customRoutingFlags.add(customRoutingFlagsItem);
+    return this;
+  }
+
+   /**
+   * The list of custom routing flags to route payment to the intended acquirer.
+   * @return customRoutingFlags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The list of custom routing flags to route payment to the intended acquirer.")
+
+  public List<String> getCustomRoutingFlags() {
+    return customRoutingFlags;
+  }
+
+
+  public void setCustomRoutingFlags(List<String> customRoutingFlags) {
+    this.customRoutingFlags = customRoutingFlags;
+  }
+
+
   public PaymentMethodSetupInfo giroPay(GiroPayInfo giroPay) {
     
     this.giroPay = giroPay;
@@ -507,6 +569,29 @@ public class PaymentMethodSetupInfo {
   }
 
 
+  public PaymentMethodSetupInfo mealVoucherFR(MealVoucherFRInfo mealVoucherFR) {
+    
+    this.mealVoucherFR = mealVoucherFR;
+    return this;
+  }
+
+   /**
+   * Get mealVoucherFR
+   * @return mealVoucherFR
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public MealVoucherFRInfo getMealVoucherFR() {
+    return mealVoucherFR;
+  }
+
+
+  public void setMealVoucherFR(MealVoucherFRInfo mealVoucherFR) {
+    this.mealVoucherFR = mealVoucherFR;
+  }
+
+
   public PaymentMethodSetupInfo paypal(PayPalInfo paypal) {
     
     this.paypal = paypal;
@@ -527,6 +612,29 @@ public class PaymentMethodSetupInfo {
 
   public void setPaypal(PayPalInfo paypal) {
     this.paypal = paypal;
+  }
+
+
+  public PaymentMethodSetupInfo reference(String reference) {
+    
+    this.reference = reference;
+    return this;
+  }
+
+   /**
+   * Your reference for the payment method. Supported characters a-z, A-Z, 0-9.
+   * @return reference
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Your reference for the payment method. Supported characters a-z, A-Z, 0-9.")
+
+  public String getReference() {
+    return reference;
+  }
+
+
+  public void setReference(String reference) {
+    this.reference = reference;
   }
 
 
@@ -632,8 +740,8 @@ public class PaymentMethodSetupInfo {
    * Payment method [variant](https://docs.adyen.com/development-resources/paymentmethodvariant#management-api).
    * @return type
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Payment method [variant](https://docs.adyen.com/development-resources/paymentmethodvariant#management-api).")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Payment method [variant](https://docs.adyen.com/development-resources/paymentmethodvariant#management-api).")
 
   public TypeEnum getType() {
     return type;
@@ -661,10 +769,13 @@ public class PaymentMethodSetupInfo {
         Objects.equals(this.cartesBancaires, paymentMethodSetupInfo.cartesBancaires) &&
         Objects.equals(this.countries, paymentMethodSetupInfo.countries) &&
         Objects.equals(this.currencies, paymentMethodSetupInfo.currencies) &&
+        Objects.equals(this.customRoutingFlags, paymentMethodSetupInfo.customRoutingFlags) &&
         Objects.equals(this.giroPay, paymentMethodSetupInfo.giroPay) &&
         Objects.equals(this.googlePay, paymentMethodSetupInfo.googlePay) &&
         Objects.equals(this.klarna, paymentMethodSetupInfo.klarna) &&
+        Objects.equals(this.mealVoucherFR, paymentMethodSetupInfo.mealVoucherFR) &&
         Objects.equals(this.paypal, paymentMethodSetupInfo.paypal) &&
+        Objects.equals(this.reference, paymentMethodSetupInfo.reference) &&
         Objects.equals(this.shopperInteraction, paymentMethodSetupInfo.shopperInteraction) &&
         Objects.equals(this.sofort, paymentMethodSetupInfo.sofort) &&
         Objects.equals(this.storeId, paymentMethodSetupInfo.storeId) &&
@@ -674,7 +785,7 @@ public class PaymentMethodSetupInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applePay, bcmc, businessLineId, cartesBancaires, countries, currencies, giroPay, googlePay, klarna, paypal, shopperInteraction, sofort, storeId, swish, type);
+    return Objects.hash(applePay, bcmc, businessLineId, cartesBancaires, countries, currencies, customRoutingFlags, giroPay, googlePay, klarna, mealVoucherFR, paypal, reference, shopperInteraction, sofort, storeId, swish, type);
   }
 
   @Override
@@ -687,10 +798,13 @@ public class PaymentMethodSetupInfo {
     sb.append("    cartesBancaires: ").append(toIndentedString(cartesBancaires)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
+    sb.append("    customRoutingFlags: ").append(toIndentedString(customRoutingFlags)).append("\n");
     sb.append("    giroPay: ").append(toIndentedString(giroPay)).append("\n");
     sb.append("    googlePay: ").append(toIndentedString(googlePay)).append("\n");
     sb.append("    klarna: ").append(toIndentedString(klarna)).append("\n");
+    sb.append("    mealVoucherFR: ").append(toIndentedString(mealVoucherFR)).append("\n");
     sb.append("    paypal: ").append(toIndentedString(paypal)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("    shopperInteraction: ").append(toIndentedString(shopperInteraction)).append("\n");
     sb.append("    sofort: ").append(toIndentedString(sofort)).append("\n");
     sb.append("    storeId: ").append(toIndentedString(storeId)).append("\n");
@@ -724,10 +838,13 @@ public class PaymentMethodSetupInfo {
     openapiFields.add("cartesBancaires");
     openapiFields.add("countries");
     openapiFields.add("currencies");
+    openapiFields.add("customRoutingFlags");
     openapiFields.add("giroPay");
     openapiFields.add("googlePay");
     openapiFields.add("klarna");
+    openapiFields.add("mealVoucher_FR");
     openapiFields.add("paypal");
+    openapiFields.add("reference");
     openapiFields.add("shopperInteraction");
     openapiFields.add("sofort");
     openapiFields.add("storeId");
@@ -736,7 +853,6 @@ public class PaymentMethodSetupInfo {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
  /**
@@ -759,13 +875,6 @@ public class PaymentMethodSetupInfo {
       for (Entry<String, JsonElement> entry : entries) {
         if (!PaymentMethodSetupInfo.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PaymentMethodSetupInfo` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PaymentMethodSetupInfo.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // validate the optional field `applePay`
@@ -792,6 +901,10 @@ public class PaymentMethodSetupInfo {
       if (jsonObj.get("currencies") != null && !jsonObj.get("currencies").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `currencies` to be an array in the JSON string but got `%s`", jsonObj.get("currencies").toString()));
       }
+      // ensure the json data is an array
+      if (jsonObj.get("customRoutingFlags") != null && !jsonObj.get("customRoutingFlags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customRoutingFlags` to be an array in the JSON string but got `%s`", jsonObj.get("customRoutingFlags").toString()));
+      }
       // validate the optional field `giroPay`
       if (jsonObj.getAsJsonObject("giroPay") != null) {
         GiroPayInfo.validateJsonObject(jsonObj.getAsJsonObject("giroPay"));
@@ -804,9 +917,17 @@ public class PaymentMethodSetupInfo {
       if (jsonObj.getAsJsonObject("klarna") != null) {
         KlarnaInfo.validateJsonObject(jsonObj.getAsJsonObject("klarna"));
       }
+      // validate the optional field `mealVoucher_FR`
+      if (jsonObj.getAsJsonObject("mealVoucher_FR") != null) {
+        MealVoucherFRInfo.validateJsonObject(jsonObj.getAsJsonObject("mealVoucher_FR"));
+      }
       // validate the optional field `paypal`
       if (jsonObj.getAsJsonObject("paypal") != null) {
         PayPalInfo.validateJsonObject(jsonObj.getAsJsonObject("paypal"));
+      }
+      // validate the optional field reference
+      if (jsonObj.get("reference") != null && !jsonObj.get("reference").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reference").toString()));
       }
       // ensure the field shopperInteraction can be parsed to an enum value
       if (jsonObj.get("shopperInteraction") != null) {

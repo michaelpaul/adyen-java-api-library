@@ -121,6 +121,10 @@ public class PaymentLinkResponse {
   @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
   private List<LineItem> lineItems = null;
 
+  public static final String SERIALIZED_NAME_MANUAL_CAPTURE = "manualCapture";
+  @SerializedName(SERIALIZED_NAME_MANUAL_CAPTURE)
+  private Boolean manualCapture;
+
   public static final String SERIALIZED_NAME_MCC = "mcc";
   @SerializedName(SERIALIZED_NAME_MCC)
   private String mcc;
@@ -283,6 +287,10 @@ public class PaymentLinkResponse {
   @SerializedName(SERIALIZED_NAME_SHOPPER_STATEMENT)
   private String shopperStatement;
 
+  public static final String SERIALIZED_NAME_SHOW_REMOVE_PAYMENT_METHOD_BUTTON = "showRemovePaymentMethodButton";
+  @SerializedName(SERIALIZED_NAME_SHOW_REMOVE_PAYMENT_METHOD_BUTTON)
+  private Boolean showRemovePaymentMethodButton = true;
+
   public static final String SERIALIZED_NAME_SOCIAL_SECURITY_NUMBER = "socialSecurityNumber";
   @SerializedName(SERIALIZED_NAME_SOCIAL_SECURITY_NUMBER)
   private String socialSecurityNumber;
@@ -416,6 +424,10 @@ public class PaymentLinkResponse {
   public static final String SERIALIZED_NAME_THEME_ID = "themeId";
   @SerializedName(SERIALIZED_NAME_THEME_ID)
   private String themeId;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -802,6 +814,29 @@ public class PaymentLinkResponse {
   }
 
 
+  public PaymentLinkResponse manualCapture(Boolean manualCapture) {
+    
+    this.manualCapture = manualCapture;
+    return this;
+  }
+
+   /**
+   * Indicates if the payment must be [captured manually](https://docs.adyen.com/online-payments/capture).
+   * @return manualCapture
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates if the payment must be [captured manually](https://docs.adyen.com/online-payments/capture).")
+
+  public Boolean getManualCapture() {
+    return manualCapture;
+  }
+
+
+  public void setManualCapture(Boolean manualCapture) {
+    this.manualCapture = manualCapture;
+  }
+
+
   public PaymentLinkResponse mcc(String mcc) {
     
     this.mcc = mcc;
@@ -1163,6 +1198,29 @@ public class PaymentLinkResponse {
   }
 
 
+  public PaymentLinkResponse showRemovePaymentMethodButton(Boolean showRemovePaymentMethodButton) {
+    
+    this.showRemovePaymentMethodButton = showRemovePaymentMethodButton;
+    return this;
+  }
+
+   /**
+   * Set to **false** to hide the button that lets the shopper remove a stored payment method.
+   * @return showRemovePaymentMethodButton
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Set to **false** to hide the button that lets the shopper remove a stored payment method.")
+
+  public Boolean getShowRemovePaymentMethodButton() {
+    return showRemovePaymentMethodButton;
+  }
+
+
+  public void setShowRemovePaymentMethodButton(Boolean showRemovePaymentMethodButton) {
+    this.showRemovePaymentMethodButton = showRemovePaymentMethodButton;
+  }
+
+
   public PaymentLinkResponse socialSecurityNumber(String socialSecurityNumber) {
     
     this.socialSecurityNumber = socialSecurityNumber;
@@ -1355,6 +1413,29 @@ public class PaymentLinkResponse {
   }
 
 
+  public PaymentLinkResponse updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * The date when the payment link status was updated.  [ISO 8601](https://www.w3.org/TR/NOTE-datetime) format: YYYY-MM-DDThh:mm:ss+TZD, for example, **2020-12-18T10:15:30+01:00**.
+   * @return updatedAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The date when the payment link status was updated.  [ISO 8601](https://www.w3.org/TR/NOTE-datetime) format: YYYY-MM-DDThh:mm:ss+TZD, for example, **2020-12-18T10:15:30+01:00**.")
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
    /**
    * The URL at which the shopper can complete the payment.
    * @return url
@@ -1394,6 +1475,7 @@ public class PaymentLinkResponse {
         Objects.equals(this.id, paymentLinkResponse.id) &&
         Objects.equals(this.installmentOptions, paymentLinkResponse.installmentOptions) &&
         Objects.equals(this.lineItems, paymentLinkResponse.lineItems) &&
+        Objects.equals(this.manualCapture, paymentLinkResponse.manualCapture) &&
         Objects.equals(this.mcc, paymentLinkResponse.mcc) &&
         Objects.equals(this.merchantAccount, paymentLinkResponse.merchantAccount) &&
         Objects.equals(this.merchantOrderReference, paymentLinkResponse.merchantOrderReference) &&
@@ -1409,6 +1491,7 @@ public class PaymentLinkResponse {
         Objects.equals(this.shopperName, paymentLinkResponse.shopperName) &&
         Objects.equals(this.shopperReference, paymentLinkResponse.shopperReference) &&
         Objects.equals(this.shopperStatement, paymentLinkResponse.shopperStatement) &&
+        Objects.equals(this.showRemovePaymentMethodButton, paymentLinkResponse.showRemovePaymentMethodButton) &&
         Objects.equals(this.socialSecurityNumber, paymentLinkResponse.socialSecurityNumber) &&
         Objects.equals(this.splitCardFundingSources, paymentLinkResponse.splitCardFundingSources) &&
         Objects.equals(this.splits, paymentLinkResponse.splits) &&
@@ -1417,12 +1500,13 @@ public class PaymentLinkResponse {
         Objects.equals(this.storePaymentMethodMode, paymentLinkResponse.storePaymentMethodMode) &&
         Objects.equals(this.telephoneNumber, paymentLinkResponse.telephoneNumber) &&
         Objects.equals(this.themeId, paymentLinkResponse.themeId) &&
+        Objects.equals(this.updatedAt, paymentLinkResponse.updatedAt) &&
         Objects.equals(this.url, paymentLinkResponse.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowedPaymentMethods, amount, applicationInfo, billingAddress, blockedPaymentMethods, captureDelayHours, countryCode, dateOfBirth, deliverAt, deliveryAddress, description, expiresAt, id, installmentOptions, lineItems, mcc, merchantAccount, merchantOrderReference, metadata, recurringProcessingModel, reference, requiredShopperFields, returnUrl, reusable, riskData, shopperEmail, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splitCardFundingSources, splits, status, store, storePaymentMethodMode, telephoneNumber, themeId, url);
+    return Objects.hash(allowedPaymentMethods, amount, applicationInfo, billingAddress, blockedPaymentMethods, captureDelayHours, countryCode, dateOfBirth, deliverAt, deliveryAddress, description, expiresAt, id, installmentOptions, lineItems, manualCapture, mcc, merchantAccount, merchantOrderReference, metadata, recurringProcessingModel, reference, requiredShopperFields, returnUrl, reusable, riskData, shopperEmail, shopperLocale, shopperName, shopperReference, shopperStatement, showRemovePaymentMethodButton, socialSecurityNumber, splitCardFundingSources, splits, status, store, storePaymentMethodMode, telephoneNumber, themeId, updatedAt, url);
   }
 
   @Override
@@ -1444,6 +1528,7 @@ public class PaymentLinkResponse {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    installmentOptions: ").append(toIndentedString(installmentOptions)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
+    sb.append("    manualCapture: ").append(toIndentedString(manualCapture)).append("\n");
     sb.append("    mcc: ").append(toIndentedString(mcc)).append("\n");
     sb.append("    merchantAccount: ").append(toIndentedString(merchantAccount)).append("\n");
     sb.append("    merchantOrderReference: ").append(toIndentedString(merchantOrderReference)).append("\n");
@@ -1459,6 +1544,7 @@ public class PaymentLinkResponse {
     sb.append("    shopperName: ").append(toIndentedString(shopperName)).append("\n");
     sb.append("    shopperReference: ").append(toIndentedString(shopperReference)).append("\n");
     sb.append("    shopperStatement: ").append(toIndentedString(shopperStatement)).append("\n");
+    sb.append("    showRemovePaymentMethodButton: ").append(toIndentedString(showRemovePaymentMethodButton)).append("\n");
     sb.append("    socialSecurityNumber: ").append(toIndentedString(socialSecurityNumber)).append("\n");
     sb.append("    splitCardFundingSources: ").append(toIndentedString(splitCardFundingSources)).append("\n");
     sb.append("    splits: ").append(toIndentedString(splits)).append("\n");
@@ -1467,6 +1553,7 @@ public class PaymentLinkResponse {
     sb.append("    storePaymentMethodMode: ").append(toIndentedString(storePaymentMethodMode)).append("\n");
     sb.append("    telephoneNumber: ").append(toIndentedString(telephoneNumber)).append("\n");
     sb.append("    themeId: ").append(toIndentedString(themeId)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1505,6 +1592,7 @@ public class PaymentLinkResponse {
     openapiFields.add("id");
     openapiFields.add("installmentOptions");
     openapiFields.add("lineItems");
+    openapiFields.add("manualCapture");
     openapiFields.add("mcc");
     openapiFields.add("merchantAccount");
     openapiFields.add("merchantOrderReference");
@@ -1520,6 +1608,7 @@ public class PaymentLinkResponse {
     openapiFields.add("shopperName");
     openapiFields.add("shopperReference");
     openapiFields.add("shopperStatement");
+    openapiFields.add("showRemovePaymentMethodButton");
     openapiFields.add("socialSecurityNumber");
     openapiFields.add("splitCardFundingSources");
     openapiFields.add("splits");
@@ -1528,6 +1617,7 @@ public class PaymentLinkResponse {
     openapiFields.add("storePaymentMethodMode");
     openapiFields.add("telephoneNumber");
     openapiFields.add("themeId");
+    openapiFields.add("updatedAt");
     openapiFields.add("url");
 
     // a set of required properties/fields (JSON key names)

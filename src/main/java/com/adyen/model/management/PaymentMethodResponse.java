@@ -99,11 +99,21 @@ public class PaymentMethodResponse {
     
     EFTPOS_AUSTRALIA("eftpos_australia"),
     
+    ELO("elo"),
+    
+    ELOCREDIT("elocredit"),
+    
+    ELODEBIT("elodebit"),
+    
     GIROCARD("girocard"),
     
     GIROPAY("giropay"),
     
     GOOGLEPAY("googlepay"),
+    
+    HIPER("hiper"),
+    
+    HIPERCARD("hipercard"),
     
     IDEAL("ideal"),
     
@@ -123,6 +133,10 @@ public class PaymentMethodResponse {
     
     MC("mc"),
     
+    MCDEBIT("mcdebit"),
+    
+    MEALVOUCHER_FR("mealVoucher_FR"),
+    
     MOBILEPAY("mobilepay"),
     
     MULTIBANCO("multibanco"),
@@ -136,6 +150,10 @@ public class PaymentMethodResponse {
     TRUSTLY("trustly"),
     
     VISA("visa"),
+    
+    VISADEBIT("visadebit"),
+    
+    VPAY("vpay"),
     
     WECHATPAY("wechatpay"),
     

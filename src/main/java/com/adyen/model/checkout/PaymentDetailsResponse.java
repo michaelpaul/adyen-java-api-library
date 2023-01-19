@@ -104,6 +104,8 @@ public class PaymentDetailsResponse {
   public enum ResultCodeEnum {
     AUTHENTICATIONFINISHED("AuthenticationFinished"),
     
+    AUTHENTICATIONNOTREQUIRED("AuthenticationNotRequired"),
+    
     AUTHORISED("Authorised"),
     
     CANCELLED("Cancelled"),

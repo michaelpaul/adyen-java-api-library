@@ -24,6 +24,7 @@ import com.adyen.model.checkout.LineItem;
 import com.adyen.model.checkout.Mandate;
 import com.adyen.model.checkout.ModelConfiguration;
 import com.adyen.model.checkout.Name;
+import com.adyen.model.checkout.PlatformChargebackLogic;
 import com.adyen.model.checkout.RiskData;
 import com.adyen.model.checkout.Split;
 import com.google.gson.TypeAdapter;
@@ -284,6 +285,10 @@ public class PaymentSetupRequest {
   public static final String SERIALIZED_NAME_ORIGIN = "origin";
   @SerializedName(SERIALIZED_NAME_ORIGIN)
   private String origin;
+
+  public static final String SERIALIZED_NAME_PLATFORM_CHARGEBACK_LOGIC = "platformChargebackLogic";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_CHARGEBACK_LOGIC)
+  private PlatformChargebackLogic platformChargebackLogic;
 
   public static final String SERIALIZED_NAME_RECURRING_EXPIRY = "recurringExpiry";
   @SerializedName(SERIALIZED_NAME_RECURRING_EXPIRY)
@@ -1180,6 +1185,29 @@ public class PaymentSetupRequest {
   }
 
 
+  public PaymentSetupRequest platformChargebackLogic(PlatformChargebackLogic platformChargebackLogic) {
+    
+    this.platformChargebackLogic = platformChargebackLogic;
+    return this;
+  }
+
+   /**
+   * Get platformChargebackLogic
+   * @return platformChargebackLogic
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PlatformChargebackLogic getPlatformChargebackLogic() {
+    return platformChargebackLogic;
+  }
+
+
+  public void setPlatformChargebackLogic(PlatformChargebackLogic platformChargebackLogic) {
+    this.platformChargebackLogic = platformChargebackLogic;
+  }
+
+
   public PaymentSetupRequest recurringExpiry(String recurringExpiry) {
     
     this.recurringExpiry = recurringExpiry;
@@ -1737,6 +1765,7 @@ public class PaymentSetupRequest {
         Objects.equals(this.metadata, paymentSetupRequest.metadata) &&
         Objects.equals(this.orderReference, paymentSetupRequest.orderReference) &&
         Objects.equals(this.origin, paymentSetupRequest.origin) &&
+        Objects.equals(this.platformChargebackLogic, paymentSetupRequest.platformChargebackLogic) &&
         Objects.equals(this.recurringExpiry, paymentSetupRequest.recurringExpiry) &&
         Objects.equals(this.recurringFrequency, paymentSetupRequest.recurringFrequency) &&
         Objects.equals(this.reference, paymentSetupRequest.reference) &&
@@ -1763,7 +1792,7 @@ public class PaymentSetupRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(additionalData, allowedPaymentMethods, amount, applicationInfo, billingAddress, blockedPaymentMethods, captureDelayHours, channel, checkoutAttemptId, company, configuration, conversionId, countryCode, dateOfBirth, dccQuote, deliveryAddress, deliveryDate, enableOneClick, enablePayOut, enableRecurring, entityType, fraudOffset, installments, lineItems, mandate, mcc, merchantAccount, merchantOrderReference, metadata, orderReference, origin, recurringExpiry, recurringFrequency, reference, returnUrl, riskData, sdkVersion, sessionValidity, shopperEmail, shopperIP, shopperInteraction, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splits, store, storePaymentMethod, telephoneNumber, threeDSAuthenticationOnly, token, trustedShopper);
+    return Objects.hash(additionalData, allowedPaymentMethods, amount, applicationInfo, billingAddress, blockedPaymentMethods, captureDelayHours, channel, checkoutAttemptId, company, configuration, conversionId, countryCode, dateOfBirth, dccQuote, deliveryAddress, deliveryDate, enableOneClick, enablePayOut, enableRecurring, entityType, fraudOffset, installments, lineItems, mandate, mcc, merchantAccount, merchantOrderReference, metadata, orderReference, origin, platformChargebackLogic, recurringExpiry, recurringFrequency, reference, returnUrl, riskData, sdkVersion, sessionValidity, shopperEmail, shopperIP, shopperInteraction, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splits, store, storePaymentMethod, telephoneNumber, threeDSAuthenticationOnly, token, trustedShopper);
   }
 
   @Override
@@ -1801,6 +1830,7 @@ public class PaymentSetupRequest {
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    orderReference: ").append(toIndentedString(orderReference)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
+    sb.append("    platformChargebackLogic: ").append(toIndentedString(platformChargebackLogic)).append("\n");
     sb.append("    recurringExpiry: ").append(toIndentedString(recurringExpiry)).append("\n");
     sb.append("    recurringFrequency: ").append(toIndentedString(recurringFrequency)).append("\n");
     sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
@@ -1876,6 +1906,7 @@ public class PaymentSetupRequest {
     openapiFields.add("metadata");
     openapiFields.add("orderReference");
     openapiFields.add("origin");
+    openapiFields.add("platformChargebackLogic");
     openapiFields.add("recurringExpiry");
     openapiFields.add("recurringFrequency");
     openapiFields.add("reference");
@@ -2038,6 +2069,10 @@ public class PaymentSetupRequest {
       // validate the optional field origin
       if (jsonObj.get("origin") != null && !jsonObj.get("origin").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `origin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("origin").toString()));
+      }
+      // validate the optional field `platformChargebackLogic`
+      if (jsonObj.getAsJsonObject("platformChargebackLogic") != null) {
+        PlatformChargebackLogic.validateJsonObject(jsonObj.getAsJsonObject("platformChargebackLogic"));
       }
       // validate the optional field recurringExpiry
       if (jsonObj.get("recurringExpiry") != null && !jsonObj.get("recurringExpiry").isJsonPrimitive()) {

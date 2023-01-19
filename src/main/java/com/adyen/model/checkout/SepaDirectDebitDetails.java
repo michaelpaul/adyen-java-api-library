@@ -48,6 +48,10 @@ import com.adyen.model.checkout.JSON;
  */
 
 public class SepaDirectDebitDetails {
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_IBAN = "iban";
   @SerializedName(SERIALIZED_NAME_IBAN)
   private String iban;
@@ -117,6 +121,29 @@ public class SepaDirectDebitDetails {
 
   public SepaDirectDebitDetails() { 
   }
+
+  public SepaDirectDebitDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
+  }
+
 
   public SepaDirectDebitDetails iban(String iban) {
     
@@ -245,7 +272,8 @@ public class SepaDirectDebitDetails {
       return false;
     }
     SepaDirectDebitDetails sepaDirectDebitDetails = (SepaDirectDebitDetails) o;
-    return Objects.equals(this.iban, sepaDirectDebitDetails.iban) &&
+    return Objects.equals(this.checkoutAttemptId, sepaDirectDebitDetails.checkoutAttemptId) &&
+        Objects.equals(this.iban, sepaDirectDebitDetails.iban) &&
         Objects.equals(this.ownerName, sepaDirectDebitDetails.ownerName) &&
         Objects.equals(this.recurringDetailReference, sepaDirectDebitDetails.recurringDetailReference) &&
         Objects.equals(this.storedPaymentMethodId, sepaDirectDebitDetails.storedPaymentMethodId) &&
@@ -254,13 +282,14 @@ public class SepaDirectDebitDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(iban, ownerName, recurringDetailReference, storedPaymentMethodId, type);
+    return Objects.hash(checkoutAttemptId, iban, ownerName, recurringDetailReference, storedPaymentMethodId, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SepaDirectDebitDetails {\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    iban: ").append(toIndentedString(iban)).append("\n");
     sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
@@ -288,6 +317,7 @@ public class SepaDirectDebitDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("iban");
     openapiFields.add("ownerName");
     openapiFields.add("recurringDetailReference");
@@ -328,6 +358,10 @@ public class SepaDirectDebitDetails {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field iban
       if (jsonObj.get("iban") != null && !jsonObj.get("iban").isJsonPrimitive()) {

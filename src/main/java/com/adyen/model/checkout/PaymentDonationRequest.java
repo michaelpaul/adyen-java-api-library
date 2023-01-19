@@ -18,7 +18,7 @@ import com.adyen.model.checkout.AccountInfo;
 import com.adyen.model.checkout.Address;
 import com.adyen.model.checkout.Amount;
 import com.adyen.model.checkout.ApplicationInfo;
-import com.adyen.model.checkout.AuthenticationData;
+import com.adyen.model.checkout.AuthenticationData2;
 import com.adyen.model.checkout.BrowserInfo;
 import com.adyen.model.checkout.CheckoutOrder;
 import com.adyen.model.checkout.Company;
@@ -29,6 +29,7 @@ import com.adyen.model.checkout.Mandate;
 import com.adyen.model.checkout.MerchantRiskIndicator;
 import com.adyen.model.checkout.Name;
 import com.adyen.model.checkout.PaymentDonationRequestPaymentMethod;
+import com.adyen.model.checkout.PlatformChargebackLogic;
 import com.adyen.model.checkout.RiskData;
 import com.adyen.model.checkout.Split;
 import com.adyen.model.checkout.ThreeDS2RequestData;
@@ -90,7 +91,7 @@ public class PaymentDonationRequest {
 
   public static final String SERIALIZED_NAME_AUTHENTICATION_DATA = "authenticationData";
   @SerializedName(SERIALIZED_NAME_AUTHENTICATION_DATA)
-  private AuthenticationData authenticationData;
+  private AuthenticationData2 authenticationData;
 
   public static final String SERIALIZED_NAME_BILLING_ADDRESS = "billingAddress";
   @SerializedName(SERIALIZED_NAME_BILLING_ADDRESS)
@@ -323,6 +324,10 @@ public class PaymentDonationRequest {
   public static final String SERIALIZED_NAME_PAYMENT_METHOD = "paymentMethod";
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
   private PaymentDonationRequestPaymentMethod paymentMethod;
+
+  public static final String SERIALIZED_NAME_PLATFORM_CHARGEBACK_LOGIC = "platformChargebackLogic";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_CHARGEBACK_LOGIC)
+  private PlatformChargebackLogic platformChargebackLogic;
 
   public static final String SERIALIZED_NAME_RECURRING_EXPIRY = "recurringExpiry";
   @SerializedName(SERIALIZED_NAME_RECURRING_EXPIRY)
@@ -623,7 +628,7 @@ public class PaymentDonationRequest {
   }
 
 
-  public PaymentDonationRequest authenticationData(AuthenticationData authenticationData) {
+  public PaymentDonationRequest authenticationData(AuthenticationData2 authenticationData) {
     
     this.authenticationData = authenticationData;
     return this;
@@ -636,12 +641,12 @@ public class PaymentDonationRequest {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public AuthenticationData getAuthenticationData() {
+  public AuthenticationData2 getAuthenticationData() {
     return authenticationData;
   }
 
 
-  public void setAuthenticationData(AuthenticationData authenticationData) {
+  public void setAuthenticationData(AuthenticationData2 authenticationData) {
     this.authenticationData = authenticationData;
   }
 
@@ -1444,6 +1449,29 @@ public class PaymentDonationRequest {
   }
 
 
+  public PaymentDonationRequest platformChargebackLogic(PlatformChargebackLogic platformChargebackLogic) {
+    
+    this.platformChargebackLogic = platformChargebackLogic;
+    return this;
+  }
+
+   /**
+   * Get platformChargebackLogic
+   * @return platformChargebackLogic
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PlatformChargebackLogic getPlatformChargebackLogic() {
+    return platformChargebackLogic;
+  }
+
+
+  public void setPlatformChargebackLogic(PlatformChargebackLogic platformChargebackLogic) {
+    this.platformChargebackLogic = platformChargebackLogic;
+  }
+
+
   public PaymentDonationRequest recurringExpiry(String recurringExpiry) {
     
     this.recurringExpiry = recurringExpiry;
@@ -2055,6 +2083,7 @@ public class PaymentDonationRequest {
         Objects.equals(this.orderReference, paymentDonationRequest.orderReference) &&
         Objects.equals(this.origin, paymentDonationRequest.origin) &&
         Objects.equals(this.paymentMethod, paymentDonationRequest.paymentMethod) &&
+        Objects.equals(this.platformChargebackLogic, paymentDonationRequest.platformChargebackLogic) &&
         Objects.equals(this.recurringExpiry, paymentDonationRequest.recurringExpiry) &&
         Objects.equals(this.recurringFrequency, paymentDonationRequest.recurringFrequency) &&
         Objects.equals(this.recurringProcessingModel, paymentDonationRequest.recurringProcessingModel) &&
@@ -2083,7 +2112,7 @@ public class PaymentDonationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountInfo, additionalData, amount, applicationInfo, authenticationData, billingAddress, browserInfo, captureDelayHours, channel, checkoutAttemptId, company, conversionId, countryCode, dateOfBirth, dccQuote, deliveryAddress, deliveryDate, deviceFingerprint, donationAccount, donationOriginalPspReference, donationToken, enableOneClick, enablePayOut, enableRecurring, entityType, fraudOffset, installments, lineItems, mandate, mcc, merchantAccount, merchantOrderReference, merchantRiskIndicator, metadata, mpiData, order, orderReference, origin, paymentMethod, recurringExpiry, recurringFrequency, recurringProcessingModel, redirectFromIssuerMethod, redirectToIssuerMethod, reference, returnUrl, riskData, sessionValidity, shopperEmail, shopperIP, shopperInteraction, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splits, store, storePaymentMethod, telephoneNumber, threeDS2RequestData, threeDSAuthenticationOnly, trustedShopper);
+    return Objects.hash(accountInfo, additionalData, amount, applicationInfo, authenticationData, billingAddress, browserInfo, captureDelayHours, channel, checkoutAttemptId, company, conversionId, countryCode, dateOfBirth, dccQuote, deliveryAddress, deliveryDate, deviceFingerprint, donationAccount, donationOriginalPspReference, donationToken, enableOneClick, enablePayOut, enableRecurring, entityType, fraudOffset, installments, lineItems, mandate, mcc, merchantAccount, merchantOrderReference, merchantRiskIndicator, metadata, mpiData, order, orderReference, origin, paymentMethod, platformChargebackLogic, recurringExpiry, recurringFrequency, recurringProcessingModel, redirectFromIssuerMethod, redirectToIssuerMethod, reference, returnUrl, riskData, sessionValidity, shopperEmail, shopperIP, shopperInteraction, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splits, store, storePaymentMethod, telephoneNumber, threeDS2RequestData, threeDSAuthenticationOnly, trustedShopper);
   }
 
   @Override
@@ -2129,6 +2158,7 @@ public class PaymentDonationRequest {
     sb.append("    orderReference: ").append(toIndentedString(orderReference)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    paymentMethod: ").append(toIndentedString(paymentMethod)).append("\n");
+    sb.append("    platformChargebackLogic: ").append(toIndentedString(platformChargebackLogic)).append("\n");
     sb.append("    recurringExpiry: ").append(toIndentedString(recurringExpiry)).append("\n");
     sb.append("    recurringFrequency: ").append(toIndentedString(recurringFrequency)).append("\n");
     sb.append("    recurringProcessingModel: ").append(toIndentedString(recurringProcessingModel)).append("\n");
@@ -2214,6 +2244,7 @@ public class PaymentDonationRequest {
     openapiFields.add("orderReference");
     openapiFields.add("origin");
     openapiFields.add("paymentMethod");
+    openapiFields.add("platformChargebackLogic");
     openapiFields.add("recurringExpiry");
     openapiFields.add("recurringFrequency");
     openapiFields.add("recurringProcessingModel");
@@ -2292,7 +2323,7 @@ public class PaymentDonationRequest {
       }
       // validate the optional field `authenticationData`
       if (jsonObj.getAsJsonObject("authenticationData") != null) {
-        AuthenticationData.validateJsonObject(jsonObj.getAsJsonObject("authenticationData"));
+        AuthenticationData2.validateJsonObject(jsonObj.getAsJsonObject("authenticationData"));
       }
       // validate the optional field `billingAddress`
       if (jsonObj.getAsJsonObject("billingAddress") != null) {
@@ -2411,6 +2442,10 @@ public class PaymentDonationRequest {
       // validate the optional field `paymentMethod`
       if (jsonObj.getAsJsonObject("paymentMethod") != null) {
         PaymentDonationRequestPaymentMethod.validateJsonObject(jsonObj.getAsJsonObject("paymentMethod"));
+      }
+      // validate the optional field `platformChargebackLogic`
+      if (jsonObj.getAsJsonObject("platformChargebackLogic") != null) {
+        PlatformChargebackLogic.validateJsonObject(jsonObj.getAsJsonObject("platformChargebackLogic"));
       }
       // validate the optional field recurringExpiry
       if (jsonObj.get("recurringExpiry") != null && !jsonObj.get("recurringExpiry").isJsonPrimitive()) {

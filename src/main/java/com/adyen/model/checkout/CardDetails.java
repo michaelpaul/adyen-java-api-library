@@ -52,6 +52,10 @@ public class CardDetails {
   @SerializedName(SERIALIZED_NAME_BRAND)
   private String brand;
 
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_CUPSECUREPLUS_SMSCODE = "cupsecureplus.smscode";
   @SerializedName(SERIALIZED_NAME_CUPSECUREPLUS_SMSCODE)
   private String cupsecureplusSmscode;
@@ -174,17 +178,7 @@ public class CardDetails {
     
     ALLIANCEDATA("alliancedata"),
     
-    CARD("card"),
-    
-    QIWIWALLET("qiwiwallet"),
-    
-    LIANLIANPAY_EBANKING_ENTERPRISE("lianlianpay_ebanking_enterprise"),
-    
-    LIANLIANPAY_EBANKING_CREDIT("lianlianpay_ebanking_credit"),
-    
-    LIANLIANPAY_EBANKING_DEBIT("lianlianpay_ebanking_debit"),
-    
-    ENTERCASH("entercash");
+    CARD("card");
 
     private String value;
 
@@ -251,6 +245,29 @@ public class CardDetails {
 
   public void setBrand(String brand) {
     this.brand = brand;
+  }
+
+
+  public CardDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
   }
 
 
@@ -660,6 +677,7 @@ public class CardDetails {
     }
     CardDetails cardDetails = (CardDetails) o;
     return Objects.equals(this.brand, cardDetails.brand) &&
+        Objects.equals(this.checkoutAttemptId, cardDetails.checkoutAttemptId) &&
         Objects.equals(this.cupsecureplusSmscode, cardDetails.cupsecureplusSmscode) &&
         Objects.equals(this.cvc, cardDetails.cvc) &&
         Objects.equals(this.encryptedCardNumber, cardDetails.encryptedCardNumber) &&
@@ -681,7 +699,7 @@ public class CardDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(brand, cupsecureplusSmscode, cvc, encryptedCardNumber, encryptedExpiryMonth, encryptedExpiryYear, encryptedSecurityCode, expiryMonth, expiryYear, fundingSource, holderName, networkPaymentReference, number, recurringDetailReference, shopperNotificationReference, storedPaymentMethodId, threeDS2SdkVersion, type);
+    return Objects.hash(brand, checkoutAttemptId, cupsecureplusSmscode, cvc, encryptedCardNumber, encryptedExpiryMonth, encryptedExpiryYear, encryptedSecurityCode, expiryMonth, expiryYear, fundingSource, holderName, networkPaymentReference, number, recurringDetailReference, shopperNotificationReference, storedPaymentMethodId, threeDS2SdkVersion, type);
   }
 
   @Override
@@ -689,6 +707,7 @@ public class CardDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class CardDetails {\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    cupsecureplusSmscode: ").append(toIndentedString(cupsecureplusSmscode)).append("\n");
     sb.append("    cvc: ").append(toIndentedString(cvc)).append("\n");
     sb.append("    encryptedCardNumber: ").append(toIndentedString(encryptedCardNumber)).append("\n");
@@ -729,6 +748,7 @@ public class CardDetails {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("brand");
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("cupsecureplus.smscode");
     openapiFields.add("cvc");
     openapiFields.add("encryptedCardNumber");
@@ -786,6 +806,10 @@ public class CardDetails {
       // validate the optional field brand
       if (jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brand").toString()));
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field cupsecureplus.smscode
       if (jsonObj.get("cupsecureplus.smscode") != null && !jsonObj.get("cupsecureplus.smscode").isJsonPrimitive()) {

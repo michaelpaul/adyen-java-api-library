@@ -117,6 +117,10 @@ public class CreatePaymentLinkRequest {
   @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
   private List<LineItem> lineItems = null;
 
+  public static final String SERIALIZED_NAME_MANUAL_CAPTURE = "manualCapture";
+  @SerializedName(SERIALIZED_NAME_MANUAL_CAPTURE)
+  private Boolean manualCapture;
+
   public static final String SERIALIZED_NAME_MCC = "mcc";
   @SerializedName(SERIALIZED_NAME_MCC)
   private String mcc;
@@ -278,6 +282,10 @@ public class CreatePaymentLinkRequest {
   public static final String SERIALIZED_NAME_SHOPPER_STATEMENT = "shopperStatement";
   @SerializedName(SERIALIZED_NAME_SHOPPER_STATEMENT)
   private String shopperStatement;
+
+  public static final String SERIALIZED_NAME_SHOW_REMOVE_PAYMENT_METHOD_BUTTON = "showRemovePaymentMethodButton";
+  @SerializedName(SERIALIZED_NAME_SHOW_REMOVE_PAYMENT_METHOD_BUTTON)
+  private Boolean showRemovePaymentMethodButton = true;
 
   public static final String SERIALIZED_NAME_SOCIAL_SECURITY_NUMBER = "socialSecurityNumber";
   @SerializedName(SERIALIZED_NAME_SOCIAL_SECURITY_NUMBER)
@@ -713,6 +721,29 @@ public class CreatePaymentLinkRequest {
   }
 
 
+  public CreatePaymentLinkRequest manualCapture(Boolean manualCapture) {
+    
+    this.manualCapture = manualCapture;
+    return this;
+  }
+
+   /**
+   * Indicates if the payment must be [captured manually](https://docs.adyen.com/online-payments/capture).
+   * @return manualCapture
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates if the payment must be [captured manually](https://docs.adyen.com/online-payments/capture).")
+
+  public Boolean getManualCapture() {
+    return manualCapture;
+  }
+
+
+  public void setManualCapture(Boolean manualCapture) {
+    this.manualCapture = manualCapture;
+  }
+
+
   public CreatePaymentLinkRequest mcc(String mcc) {
     
     this.mcc = mcc;
@@ -1074,6 +1105,29 @@ public class CreatePaymentLinkRequest {
   }
 
 
+  public CreatePaymentLinkRequest showRemovePaymentMethodButton(Boolean showRemovePaymentMethodButton) {
+    
+    this.showRemovePaymentMethodButton = showRemovePaymentMethodButton;
+    return this;
+  }
+
+   /**
+   * Set to **false** to hide the button that lets the shopper remove a stored payment method.
+   * @return showRemovePaymentMethodButton
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Set to **false** to hide the button that lets the shopper remove a stored payment method.")
+
+  public Boolean getShowRemovePaymentMethodButton() {
+    return showRemovePaymentMethodButton;
+  }
+
+
+  public void setShowRemovePaymentMethodButton(Boolean showRemovePaymentMethodButton) {
+    this.showRemovePaymentMethodButton = showRemovePaymentMethodButton;
+  }
+
+
   public CreatePaymentLinkRequest socialSecurityNumber(String socialSecurityNumber) {
     
     this.socialSecurityNumber = socialSecurityNumber;
@@ -1267,6 +1321,7 @@ public class CreatePaymentLinkRequest {
         Objects.equals(this.expiresAt, createPaymentLinkRequest.expiresAt) &&
         Objects.equals(this.installmentOptions, createPaymentLinkRequest.installmentOptions) &&
         Objects.equals(this.lineItems, createPaymentLinkRequest.lineItems) &&
+        Objects.equals(this.manualCapture, createPaymentLinkRequest.manualCapture) &&
         Objects.equals(this.mcc, createPaymentLinkRequest.mcc) &&
         Objects.equals(this.merchantAccount, createPaymentLinkRequest.merchantAccount) &&
         Objects.equals(this.merchantOrderReference, createPaymentLinkRequest.merchantOrderReference) &&
@@ -1282,6 +1337,7 @@ public class CreatePaymentLinkRequest {
         Objects.equals(this.shopperName, createPaymentLinkRequest.shopperName) &&
         Objects.equals(this.shopperReference, createPaymentLinkRequest.shopperReference) &&
         Objects.equals(this.shopperStatement, createPaymentLinkRequest.shopperStatement) &&
+        Objects.equals(this.showRemovePaymentMethodButton, createPaymentLinkRequest.showRemovePaymentMethodButton) &&
         Objects.equals(this.socialSecurityNumber, createPaymentLinkRequest.socialSecurityNumber) &&
         Objects.equals(this.splitCardFundingSources, createPaymentLinkRequest.splitCardFundingSources) &&
         Objects.equals(this.splits, createPaymentLinkRequest.splits) &&
@@ -1293,7 +1349,7 @@ public class CreatePaymentLinkRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowedPaymentMethods, amount, applicationInfo, billingAddress, blockedPaymentMethods, captureDelayHours, countryCode, dateOfBirth, deliverAt, deliveryAddress, description, expiresAt, installmentOptions, lineItems, mcc, merchantAccount, merchantOrderReference, metadata, recurringProcessingModel, reference, requiredShopperFields, returnUrl, reusable, riskData, shopperEmail, shopperLocale, shopperName, shopperReference, shopperStatement, socialSecurityNumber, splitCardFundingSources, splits, store, storePaymentMethodMode, telephoneNumber, themeId);
+    return Objects.hash(allowedPaymentMethods, amount, applicationInfo, billingAddress, blockedPaymentMethods, captureDelayHours, countryCode, dateOfBirth, deliverAt, deliveryAddress, description, expiresAt, installmentOptions, lineItems, manualCapture, mcc, merchantAccount, merchantOrderReference, metadata, recurringProcessingModel, reference, requiredShopperFields, returnUrl, reusable, riskData, shopperEmail, shopperLocale, shopperName, shopperReference, shopperStatement, showRemovePaymentMethodButton, socialSecurityNumber, splitCardFundingSources, splits, store, storePaymentMethodMode, telephoneNumber, themeId);
   }
 
   @Override
@@ -1314,6 +1370,7 @@ public class CreatePaymentLinkRequest {
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    installmentOptions: ").append(toIndentedString(installmentOptions)).append("\n");
     sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
+    sb.append("    manualCapture: ").append(toIndentedString(manualCapture)).append("\n");
     sb.append("    mcc: ").append(toIndentedString(mcc)).append("\n");
     sb.append("    merchantAccount: ").append(toIndentedString(merchantAccount)).append("\n");
     sb.append("    merchantOrderReference: ").append(toIndentedString(merchantOrderReference)).append("\n");
@@ -1329,6 +1386,7 @@ public class CreatePaymentLinkRequest {
     sb.append("    shopperName: ").append(toIndentedString(shopperName)).append("\n");
     sb.append("    shopperReference: ").append(toIndentedString(shopperReference)).append("\n");
     sb.append("    shopperStatement: ").append(toIndentedString(shopperStatement)).append("\n");
+    sb.append("    showRemovePaymentMethodButton: ").append(toIndentedString(showRemovePaymentMethodButton)).append("\n");
     sb.append("    socialSecurityNumber: ").append(toIndentedString(socialSecurityNumber)).append("\n");
     sb.append("    splitCardFundingSources: ").append(toIndentedString(splitCardFundingSources)).append("\n");
     sb.append("    splits: ").append(toIndentedString(splits)).append("\n");
@@ -1372,6 +1430,7 @@ public class CreatePaymentLinkRequest {
     openapiFields.add("expiresAt");
     openapiFields.add("installmentOptions");
     openapiFields.add("lineItems");
+    openapiFields.add("manualCapture");
     openapiFields.add("mcc");
     openapiFields.add("merchantAccount");
     openapiFields.add("merchantOrderReference");
@@ -1387,6 +1446,7 @@ public class CreatePaymentLinkRequest {
     openapiFields.add("shopperName");
     openapiFields.add("shopperReference");
     openapiFields.add("shopperStatement");
+    openapiFields.add("showRemovePaymentMethodButton");
     openapiFields.add("socialSecurityNumber");
     openapiFields.add("splitCardFundingSources");
     openapiFields.add("splits");

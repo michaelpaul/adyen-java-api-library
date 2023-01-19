@@ -106,6 +106,57 @@ public class ThreeDSRequestData {
   private ChallengeWindowSizeEnum challengeWindowSize;
 
   /**
+   * Flag for data only flow.
+   */
+  @JsonAdapter(DataOnlyEnum.Adapter.class)
+  public enum DataOnlyEnum {
+    FALSE("false"),
+    
+    TRUE("true");
+
+    private String value;
+
+    DataOnlyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DataOnlyEnum fromValue(String value) {
+      for (DataOnlyEnum b : DataOnlyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DataOnlyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DataOnlyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DataOnlyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DataOnlyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DATA_ONLY = "dataOnly";
+  @SerializedName(SERIALIZED_NAME_DATA_ONLY)
+  private DataOnlyEnum dataOnly;
+
+  /**
    * Indicates if [native 3D Secure authentication](https://docs.adyen.com/online-payments/3d-secure/native-3ds2) should be used when available.  Possible values: * **preferred**: Use native 3D Secure authentication when available.
    */
   @JsonAdapter(NativeThreeDSEnum.Adapter.class)
@@ -231,6 +282,29 @@ public class ThreeDSRequestData {
   }
 
 
+  public ThreeDSRequestData dataOnly(DataOnlyEnum dataOnly) {
+    
+    this.dataOnly = dataOnly;
+    return this;
+  }
+
+   /**
+   * Flag for data only flow.
+   * @return dataOnly
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Flag for data only flow.")
+
+  public DataOnlyEnum getDataOnly() {
+    return dataOnly;
+  }
+
+
+  public void setDataOnly(DataOnlyEnum dataOnly) {
+    this.dataOnly = dataOnly;
+  }
+
+
   public ThreeDSRequestData nativeThreeDS(NativeThreeDSEnum nativeThreeDS) {
     
     this.nativeThreeDS = nativeThreeDS;
@@ -288,13 +362,14 @@ public class ThreeDSRequestData {
     }
     ThreeDSRequestData threeDSRequestData = (ThreeDSRequestData) o;
     return Objects.equals(this.challengeWindowSize, threeDSRequestData.challengeWindowSize) &&
+        Objects.equals(this.dataOnly, threeDSRequestData.dataOnly) &&
         Objects.equals(this.nativeThreeDS, threeDSRequestData.nativeThreeDS) &&
         Objects.equals(this.threeDSVersion, threeDSRequestData.threeDSVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(challengeWindowSize, nativeThreeDS, threeDSVersion);
+    return Objects.hash(challengeWindowSize, dataOnly, nativeThreeDS, threeDSVersion);
   }
 
   @Override
@@ -302,6 +377,7 @@ public class ThreeDSRequestData {
     StringBuilder sb = new StringBuilder();
     sb.append("class ThreeDSRequestData {\n");
     sb.append("    challengeWindowSize: ").append(toIndentedString(challengeWindowSize)).append("\n");
+    sb.append("    dataOnly: ").append(toIndentedString(dataOnly)).append("\n");
     sb.append("    nativeThreeDS: ").append(toIndentedString(nativeThreeDS)).append("\n");
     sb.append("    threeDSVersion: ").append(toIndentedString(threeDSVersion)).append("\n");
     sb.append("}");
@@ -327,6 +403,7 @@ public class ThreeDSRequestData {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("challengeWindowSize");
+    openapiFields.add("dataOnly");
     openapiFields.add("nativeThreeDS");
     openapiFields.add("threeDSVersion");
 
@@ -362,6 +439,13 @@ public class ThreeDSRequestData {
           throw new IllegalArgumentException(String.format("Expected the field `challengeWindowSize` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challengeWindowSize").toString()));
         }
         ChallengeWindowSizeEnum.fromValue(jsonObj.get("challengeWindowSize").getAsString());
+      }
+      // ensure the field dataOnly can be parsed to an enum value
+      if (jsonObj.get("dataOnly") != null) {
+        if(!jsonObj.get("dataOnly").isJsonPrimitive()) {
+          throw new IllegalArgumentException(String.format("Expected the field `dataOnly` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dataOnly").toString()));
+        }
+        DataOnlyEnum.fromValue(jsonObj.get("dataOnly").getAsString());
       }
       // ensure the field nativeThreeDS can be parsed to an enum value
       if (jsonObj.get("nativeThreeDS") != null) {

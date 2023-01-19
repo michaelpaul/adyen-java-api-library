@@ -154,8 +154,8 @@ public class CreateCompanyUserRequest {
    * The email address of the user.
    * @return email
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The email address of the user.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The email address of the user.")
 
   public String getEmail() {
     return email;
@@ -177,8 +177,8 @@ public class CreateCompanyUserRequest {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Name getName() {
     return name;
@@ -254,8 +254,8 @@ public class CreateCompanyUserRequest {
    * The username for this user. Allowed length: 255 alphanumeric characters.
    * @return username
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The username for this user. Allowed length: 255 alphanumeric characters.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The username for this user. Allowed length: 255 alphanumeric characters.")
 
   public String getUsername() {
     return username;
@@ -334,9 +334,6 @@ public class CreateCompanyUserRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("email");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("username");
   }
 
  /**
@@ -359,13 +356,6 @@ public class CreateCompanyUserRequest {
       for (Entry<String, JsonElement> entry : entries) {
         if (!CreateCompanyUserRequest.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateCompanyUserRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateCompanyUserRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // ensure the json data is an array

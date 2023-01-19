@@ -52,6 +52,10 @@ public class UpiCollectDetails {
   @SerializedName(SERIALIZED_NAME_BILLING_SEQUENCE_NUMBER)
   private String billingSequenceNumber;
 
+  public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
+  private String checkoutAttemptId;
+
   public static final String SERIALIZED_NAME_RECURRING_DETAIL_REFERENCE = "recurringDetailReference";
   @SerializedName(SERIALIZED_NAME_RECURRING_DETAIL_REFERENCE)
   private String recurringDetailReference;
@@ -140,6 +144,29 @@ public class UpiCollectDetails {
 
   public void setBillingSequenceNumber(String billingSequenceNumber) {
     this.billingSequenceNumber = billingSequenceNumber;
+  }
+
+
+  public UpiCollectDetails checkoutAttemptId(String checkoutAttemptId) {
+    
+    this.checkoutAttemptId = checkoutAttemptId;
+    return this;
+  }
+
+   /**
+   * The checkout attempt identifier.
+   * @return checkoutAttemptId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The checkout attempt identifier.")
+
+  public String getCheckoutAttemptId() {
+    return checkoutAttemptId;
+  }
+
+
+  public void setCheckoutAttemptId(String checkoutAttemptId) {
+    this.checkoutAttemptId = checkoutAttemptId;
   }
 
 
@@ -271,6 +298,7 @@ public class UpiCollectDetails {
     }
     UpiCollectDetails upiCollectDetails = (UpiCollectDetails) o;
     return Objects.equals(this.billingSequenceNumber, upiCollectDetails.billingSequenceNumber) &&
+        Objects.equals(this.checkoutAttemptId, upiCollectDetails.checkoutAttemptId) &&
         Objects.equals(this.recurringDetailReference, upiCollectDetails.recurringDetailReference) &&
         Objects.equals(this.shopperNotificationReference, upiCollectDetails.shopperNotificationReference) &&
         Objects.equals(this.storedPaymentMethodId, upiCollectDetails.storedPaymentMethodId) &&
@@ -280,7 +308,7 @@ public class UpiCollectDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(billingSequenceNumber, recurringDetailReference, shopperNotificationReference, storedPaymentMethodId, type, virtualPaymentAddress);
+    return Objects.hash(billingSequenceNumber, checkoutAttemptId, recurringDetailReference, shopperNotificationReference, storedPaymentMethodId, type, virtualPaymentAddress);
   }
 
   @Override
@@ -288,6 +316,7 @@ public class UpiCollectDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpiCollectDetails {\n");
     sb.append("    billingSequenceNumber: ").append(toIndentedString(billingSequenceNumber)).append("\n");
+    sb.append("    checkoutAttemptId: ").append(toIndentedString(checkoutAttemptId)).append("\n");
     sb.append("    recurringDetailReference: ").append(toIndentedString(recurringDetailReference)).append("\n");
     sb.append("    shopperNotificationReference: ").append(toIndentedString(shopperNotificationReference)).append("\n");
     sb.append("    storedPaymentMethodId: ").append(toIndentedString(storedPaymentMethodId)).append("\n");
@@ -316,6 +345,7 @@ public class UpiCollectDetails {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("billingSequenceNumber");
+    openapiFields.add("checkoutAttemptId");
     openapiFields.add("recurringDetailReference");
     openapiFields.add("shopperNotificationReference");
     openapiFields.add("storedPaymentMethodId");
@@ -360,6 +390,10 @@ public class UpiCollectDetails {
       // validate the optional field billingSequenceNumber
       if (jsonObj.get("billingSequenceNumber") != null && !jsonObj.get("billingSequenceNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billingSequenceNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billingSequenceNumber").toString()));
+      }
+      // validate the optional field checkoutAttemptId
+      if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
       // validate the optional field recurringDetailReference
       if (jsonObj.get("recurringDetailReference") != null && !jsonObj.get("recurringDetailReference").isJsonPrimitive()) {
