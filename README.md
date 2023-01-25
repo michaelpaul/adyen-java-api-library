@@ -195,6 +195,12 @@ These include commented code, highlighting key features and concepts, and exampl
 
 ## Contributing
  
+<a href="https://gitpod.io/#https://github.com/michaelpaul/adyen-java-api-library/tree/gitpod">
+  <img
+    src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod"
+    alt="Contribute with Gitpod"
+  />
+</a>
  
 We encourage you to contribute to this repository, so everyone can benefit from new features, bug fixes, and any other improvements.
  
